@@ -1,3 +1,7 @@
+;; me
+(setq user-full-name "Dmitry Ulyanov")
+(setq user-mail-address "sillent1987@gmail.com")
+
 (require 'package)
 (add-to-list 'package-archives
 	     '("melpa" . "http://melpa.milkbox.net/packages/") t)
@@ -11,9 +15,14 @@
 (defconst demo-packages
   '(anzu
     company
+    company-ansible
+    company-shell
+    company-c-headers
     duplicate-thing
     ggtags
     helm
+    helm-make
+    autopair
     helm-gtags
     helm-projectile
     helm-swoop
@@ -28,6 +37,9 @@
     projectile
     volatile-highlights
     undo-tree
+    magit
+    magit-popup
+    yaml-mode
     zygospore))
 
 (defun install-packages ()
@@ -52,6 +64,10 @@
 ;; (require 'setup-ggtags)
 (require 'setup-cedet)
 (require 'setup-editing)
+(require 'setup-helm-swoop)
+
+(require 'autopair)
+(require 'setup-org)
 
 (windmove-default-keybindings)
 
@@ -158,3 +174,68 @@
 
 ;; Package zygospore
 (global-set-key (kbd "C-x 1") 'zygospore-toggle-delete-other-windows)
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+;; '(ansi-color-names-vector
+;;   ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
+ '(custom-enabled-themes (quote (wombat))))
+ ;;'(custom-safe-themes
+   ;;(quote
+    ;;("7ceb8967b229c1ba102378d3e2c5fef20ec96a41f615b454e0dc0bfa1d326ea6" default))))
+(show-paren-mode t)
+(setq show-paren-style 'expression)
+(electric-pair-mode t);; { } pair mode
+(setq inhibit-startup-screen t)
+(setq inhibit-splash-screen t)
+(column-number-mode t)
+(display-battery-mode t)
+
+(setq ediff-split-window-function 'split-window-horizontally)
+(setq make-backup-files nil)
+(setq auto-save-list-file-name nil)
+(setq auto-save-default nil)
+(tool-bar-mode 0);; tool bar mode off
+(menu-bar-mode 0);; menu bar mode off
+(tooltip-mode -1)
+;;(scroll-bar-mode -1) ;; hide scroll
+(blink-cursor-mode -1) ;;  убираем мерцающий курсор
+;;(setq use-dialog-box t) ;;  никаких графических диалогов
+(setq redisplay-dont-pause t) ;; лучшая отрисовка буфера
+(setq ring-bell-function 'ignore) ;; никаких звуковых сообщений
+(setq display-time-24hr-format t)
+(display-time-mode t)
+(size-indication-mode -1)
+(setq-default indent-tabs-mode nil)
+(setq-default tab-width 8)
+(setq-default c-basic-offset 8)
+(setq-default standard-indent 2)
+(setq-default lisp-body-indent 2)
+
+(define-key input-decode-map "\e\eOA" [(meta up)])
+(define-key input-decode-map "\e\eOB" [(meta down)])
+(define-key input-decode-map "\e\eOC" [(meta left)])
+(define-key input-decode-map "\e\eOD" [(meta right)])
+(global-set-key [(meta up)] 'enlarge-window)
+(global-set-key [(meta down)] 'shrink-window)
+(global-set-key [(meta left)] 'enlarge-window-horizontally)
+(global-set-key [(meta right)] 'shrink-window-horizontally)
+(put 'narrow-to-region 'disabled nil)
+
+;; faces
+(set-face-background 'mode-line "#0F1A5C")
+(set-face-foreground 'mode-line-buffer-id "#DC314C")
+(set-face-background 'mode-line-buffer-id "#0F1A5C")
+
+(set-face-background 'mode-line-inactive "#B7BDDF")
+(set-face-background 'isearch "#ABE6F1")
+(set-face-foreground 'isearch "#0F1A5C")
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
