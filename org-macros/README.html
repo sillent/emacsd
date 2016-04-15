@@ -1,0 +1,2000 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<title>Org Macros</title>
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Fabrice Niessen" />
+<meta  name="keywords" content="org-mode, macro, examples" />
+<link rel="stylesheet" type="text/css" href="http://www.pirilampo.org/styles/readtheorg/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="http://www.pirilampo.org/styles/readtheorg/css/readtheorg.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/lib/js/jquery.stickytableheaders.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Org Macros</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgheadline4">Overview</a>
+<ul>
+<li><a href="#orgheadline1">Description</a></li>
+<li><a href="#orgheadline2">Objectives</a></li>
+<li><a href="#orgheadline3">Features</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline16">Code</a>
+<ul>
+<li><a href="#orgheadline5">Checkout</a></li>
+<li><a href="#orgheadline6">Installation</a></li>
+<li><a href="#orgheadline7">Usage</a></li>
+<li><a href="#orgheadline8">Macros</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline47">Org built-ins</a>
+<ul>
+<li><a href="#author">Author macro</a></li>
+<li><a href="#date">Date macro</a></li>
+<li><a href="#email">Email macro</a></li>
+<li><a href="#input-file">Input-file macro</a></li>
+<li><a href="#modification-time">Modification-time macro</a></li>
+<li><a href="#property">Property macro</a></li>
+<li><a href="#time">Time macro</a></li>
+<li><a href="#title">Title macro</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline85">Basic formatting</a>
+<ul>
+<li><a href="#bgcolor">BgColor macro</a></li>
+<li><a href="#color">Color macro</a></li>
+<li><a href="#fixme">Fixme macro</a></li>
+<li><a href="#highlight">Highlight macro</a></li>
+<li><a href="#hl">Hl macro</a></li>
+<li><a href="#loremipsum">LoremIpsum macro</a></li>
+<li><a href="#newline">Newline macro</a></li>
+<li><a href="#redact">Redact macro</a></li>
+<li><a href="#kbd">Kbd macro</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline94">Advanced</a>
+<ul>
+<li><a href="#if-latex-else">if-latex macro</a></li>
+<li><a href="#style">style</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline104">Generic</a>
+<ul>
+<li><a href="#image">Image macro</a></li>
+<li><a href="#version-history">Version-history macro</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline139">Layout</a>
+<ul>
+<li><a href="#collapse">Collapse macro</a></li>
+<li><a href="#info">Info macro</a></li>
+<li><a href="#minipage">MiniPage macro</a></li>
+<li><a href="#note">Note macro</a></li>
+<li><a href="#panel">Panel macro</a></li>
+<li><a href="#tip">Tip macro</a></li>
+<li><a href="#warning">Warning macro</a></li>
+<li><a href="#orgheadline138">Vertically aligning table row contents</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline140">Navigation and lists</a>
+<ul>
+<li><a href="#toc">Toc macro</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline144">Dev tools</a>
+<ul>
+<li><a href="#twitter-share-link-button">Twitter &ldquo;Share a link&rdquo;</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline145">Contributing</a>
+<ul>
+<li><a href="#orgheadline153">Issues</a></li>
+<li><a href="#orgheadline154">Patches</a></li>
+<li><a href="#orgheadline155">Donations</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline146">License</a></li>
+</ul>
+</div>
+</div>
+<a href="http://opensource.org/licenses/GPL-3.0">
+  <img src="http://img.shields.io/:license-gpl-blue.svg" alt=":license-gpl-blue.svg" />
+</a>
+
+<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=VCVAS6KPDQ4JC&lc=BE&item_number=org%2dhtml%2dthemes&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donate_LG%2egif%3aNonHosted">
+  <img src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" alt="btn_donate_LG.gif" />
+</a>
+
+<div id="outline-container-orgheadline4" class="outline-2">
+<h2 id="orgheadline4">Overview</h2>
+<div class="outline-text-2" id="text-orgheadline4">
+</div><div id="outline-container-orgheadline1" class="outline-3">
+<h3 id="orgheadline1">Description</h3>
+<div class="outline-text-3" id="text-orgheadline1">
+<p>
+The <b>macros</b> in Org allow you to add text or code to an Org document that will be
+<b>expanded during export</b>: the text between the 3 pairs of accolades is expanded
+so that readers can see it in the exported versions of the document.
+</p>
+
+<p>
+Some people (such as me) use it to construct complex HTML or LaTeX code.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline2" class="outline-3">
+<h3 id="orgheadline2">Objectives</h3>
+<div class="outline-text-3" id="text-orgheadline2">
+<p>
+Using macros allows you to <b>insert dynamic content</b> or <b>add extra functionality</b> in
+exports of an Org document.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline3" class="outline-3">
+<h3 id="orgheadline3">Features</h3>
+<div class="outline-text-3" id="text-orgheadline3">
+<p>
+These <a href="https://github.com/fniessen/org-macros">Org-macros</a> have been tested for HTML exports.
+</p>
+
+<p>
+FIXME They will be soon made available for PDF exports.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline16" class="outline-2">
+<h2 id="orgheadline16">Code</h2>
+<div class="outline-text-2" id="text-orgheadline16">
+</div><div id="outline-container-orgheadline5" class="outline-3">
+<h3 id="orgheadline5">Checkout</h3>
+<div class="outline-text-3" id="text-orgheadline5">
+<p>
+Use this command to check out the latest source code of the project from the
+Git repository hosted at <a href="https://github.com/fniessen/org-macros">GitHub</a>:
+</p>
+
+<pre class="example">
+git clone git@github.com:fniessen/org-macros.git
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgheadline6" class="outline-3">
+<h3 id="orgheadline6">Installation</h3>
+<div class="outline-text-3" id="text-orgheadline6">
+<div class="org-src-container">
+
+<pre class="src src-org"><span class="org-org-meta-line">#+INCLUDE: /path/to/org-macros.setup</span>
+</pre>
+</div>
+
+<div class="info">
+<p>
+As there are Babel code blocks inside the <code>org-macros.setup</code> file, it needs to be
+loaded via the <code>#+INCLUDE:</code> directive, not via a <code>#+SETUPFILE:</code>!
+</p>
+
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline7" class="outline-3">
+<h3 id="orgheadline7">Usage</h3>
+<div class="outline-text-3" id="text-orgheadline7">
+<p>
+Once you&rsquo;ve cloned <a href="https://github.com/fniessen/org-macros">Org-macros</a>, many macros will be ready to use within your Org
+files.
+</p>
+
+<p>
+You can invoke macros anywhere in the document (even in code examples).
+</p>
+
+<p>
+Examples:
+</p>
+
+<ul class="org-ul">
+<li><p>
+With no arguments:
+</p>
+
+<pre class="example">
+{{{name-of-the-macro}}}
+</pre></li>
+
+<li><p>
+With arguments:
+</p>
+
+<pre class="example">
+{{{name-of-the-macro(arg1,arg2)}}}
+</pre></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline8" class="outline-3">
+<h3 id="orgheadline8">Macros</h3>
+<div class="outline-text-3" id="text-orgheadline8">
+<p>
+Below is a list of the few macros currently available.
+</p>
+</div>
+
+<div id="outline-container-orgheadline9" class="outline-4">
+<h4 id="orgheadline9">Org built-ins</h4>
+<div class="outline-text-4" id="text-orgheadline9">
+<ul class="org-ul">
+<li><a href="#author">author</a> macro</li>
+<li><a href="#date">date</a> macro</li>
+<li><a href="#email">email</a> macro</li>
+<li><a href="#input-file">input-file</a> macro</li>
+<li><a href="#modification-time">modification-time</a> macro</li>
+<li><a href="#property">property</a> macro</li>
+<li><a href="#time">time</a> macro</li>
+<li><a href="#title">title</a> macro</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline10" class="outline-4">
+<h4 id="orgheadline10">Basic formatting</h4>
+<div class="outline-text-4" id="text-orgheadline10">
+<ul class="org-ul">
+<li><a href="#bgcolor">bgcolor</a> macro</li>
+<li><a href="#color">color</a> macro</li>
+<li><a href="#fixme">fixme</a> macro</li>
+<li><a href="#highlight">highlight</a> macro</li>
+<li><a href="#loremipsum">loremipsum</a> macro</li>
+
+<li><a href="#newline">newline</a> macro</li>
+<li><a href="#redact">redact</a> macro</li>
+<li><a href="#kbd">kbd</a> macro</li>
+</ul>
+</div>
+</div>
+
+
+
+<div id="outline-container-orgheadline11" class="outline-4">
+<h4 id="orgheadline11">Advanced</h4>
+<div class="outline-text-4" id="text-orgheadline11">
+<ul class="org-ul">
+<li><a href="#if-latex-else">if-latex-else</a> macro</li>
+<li><a href="#style">style</a> macro</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline12" class="outline-4">
+<h4 id="orgheadline12">Generic macros</h4>
+<div class="outline-text-4" id="text-orgheadline12">
+<ul class="org-ul">
+<li><a href="#image">image</a> macro</li>
+<li><code>recently-updated</code> macro</li>
+<li><code>tasklist</code> macro</li>
+<li><a href="#version-history">version-history</a> macro</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline13" class="outline-4">
+<h4 id="orgheadline13">Layout</h4>
+<div class="outline-text-4" id="text-orgheadline13">
+<ul class="org-ul">
+<li><a href="#collapse">collapse</a> macro</li>
+<li><a href="#info">info</a> macro</li>
+<li><a href="#minipage">minipage</a> macro</li>
+<li><a href="#note">note</a> macro</li>
+<li><a href="#panel">panel</a> macro</li>
+<li><a href="#tip">tip</a> macro</li>
+<li><a href="#warning">warning</a> macro</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline14" class="outline-4">
+<h4 id="orgheadline14">Navigation and lists</h4>
+<div class="outline-text-4" id="text-orgheadline14">
+<ul class="org-ul">
+<li><code>children</code> macro (to display child pages)</li>
+<li><a href="#toc">toc</a> macro</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline15" class="outline-4">
+<h4 id="orgheadline15">Dev tools</h4>
+<div class="outline-text-4" id="text-orgheadline15">
+<ul class="org-ul">
+<li><a href="#twitter-share-link-button">twitter-share-link-button</a> macro</li>
+</ul>
+
+<hr  />
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline47" class="outline-2">
+<h2 id="orgheadline47">Org built-ins</h2>
+<div class="outline-text-2" id="text-orgheadline47">
+</div><div id="outline-container-orgheadline20" class="outline-3">
+<h3 id="author"><a id="orgheadline20"></a>Author macro</h3>
+<div class="outline-text-3" id="text-author">
+<p>
+The <code>author</code> macro outputs a list of users who have created or edited the
+document.
+</p>
+</div>
+
+<div id="outline-container-orgheadline17" class="outline-4">
+<h4 id="orgheadline17">Parameters</h4>
+<div class="outline-text-4" id="text-orgheadline17">
+<p>
+None.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline18" class="outline-4">
+<h4 id="orgheadline18">Examples</h4>
+<div class="outline-text-4" id="text-orgheadline18">
+<p>
+People who have created and edited this document: Fabrice Niessen.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline19" class="outline-4">
+<h4 id="orgheadline19">See also</h4>
+<div class="outline-text-4" id="text-orgheadline19">
+<p>
+Option <code>#+AUTHOR:</code>.
+</p>
+
+<hr  />
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline24" class="outline-3">
+<h3 id="date"><a id="orgheadline24"></a>Date macro</h3>
+<div class="outline-text-3" id="text-date">
+<p>
+The <code>date</code> macro outputs the <b>date and time</b> specified in the document.
+</p>
+</div>
+
+<div id="outline-container-orgheadline21" class="outline-4">
+<h4 id="orgheadline21">Parameters</h4>
+<div class="outline-text-4" id="text-orgheadline21">
+<ol class="org-ol">
+<li><b>Format string</b> understood by <code>format-time-string</code>.</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-orgheadline22" class="outline-4">
+<h4 id="orgheadline22">Examples</h4>
+<div class="outline-text-4" id="text-orgheadline22">
+<p>
+The date of this document is: 2015-05-11 12:34 or 2015-05-11 12:34.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline23" class="outline-4">
+<h4 id="orgheadline23">See also</h4>
+<div class="outline-text-4" id="text-orgheadline23">
+<ul class="org-ul">
+<li>Option <code>#+DATE:</code> (for the whole document).</li>
+<li>Property <code>:EXPORT_DATE:</code> (for specific subtrees).</li>
+<li><a href="#modification-time">modification-time</a> macro.</li>
+<li><a href="#time">time</a> macro.</li>
+</ul>
+
+<hr  />
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline28" class="outline-3">
+<h3 id="email"><a id="orgheadline28"></a>Email macro</h3>
+<div class="outline-text-3" id="text-email">
+<p>
+The <code>email</code> macro outputs the email of the author(s).
+</p>
+</div>
+
+<div id="outline-container-orgheadline25" class="outline-4">
+<h4 id="orgheadline25">Parameters</h4>
+<div class="outline-text-4" id="text-orgheadline25">
+<p>
+None.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline26" class="outline-4">
+<h4 id="orgheadline26">Examples</h4>
+<div class="outline-text-4" id="text-orgheadline26">
+<p>
+The email of this document is: (concat &ldquo;fniessen&rdquo; at-sign &ldquo;pirilampo.org&rdquo;).
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline27" class="outline-4">
+<h4 id="orgheadline27">See also</h4>
+<div class="outline-text-4" id="text-orgheadline27">
+<p>
+Option <code>#+EMAIL:</code>.
+</p>
+
+<hr  />
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline31" class="outline-3">
+<h3 id="input-file"><a id="orgheadline31"></a>Input-file macro</h3>
+<div class="outline-text-3" id="text-input-file">
+<p>
+The <code>input-file</code> macro displays the name of the input Org file.
+</p>
+</div>
+
+<div id="outline-container-orgheadline29" class="outline-4">
+<h4 id="orgheadline29">Parameters</h4>
+<div class="outline-text-4" id="text-orgheadline29">
+<p>
+None.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline30" class="outline-4">
+<h4 id="orgheadline30">Examples</h4>
+<div class="outline-text-4" id="text-orgheadline30">
+<p>
+The input file name for this document is: README.org.
+</p>
+
+<hr  />
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline35" class="outline-3">
+<h3 id="modification-time"><a id="orgheadline35"></a>Modification-time macro</h3>
+<div class="outline-text-3" id="text-modification-time">
+<p>
+The <code>modification-time</code> macro outputs the <b>modification date and time</b> <i>of</i> the file
+being exported.
+</p>
+</div>
+
+<div id="outline-container-orgheadline32" class="outline-4">
+<h4 id="orgheadline32">Parameters</h4>
+<div class="outline-text-4" id="text-orgheadline32">
+<ol class="org-ol">
+<li><b>Format string</b> understood by <code>format-time-string</code>.</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-orgheadline33" class="outline-4">
+<h4 id="orgheadline33">Examples</h4>
+<div class="outline-text-4" id="text-orgheadline33">
+<p>
+This document was last modified on: 2015-07-27 Mon 11:25.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline34" class="outline-4">
+<h4 id="orgheadline34">See also</h4>
+<div class="outline-text-4" id="text-orgheadline34">
+<ul class="org-ul">
+<li><a href="#date">date</a> macro.</li>
+<li><a href="#time">time</a> macro.</li>
+</ul>
+
+<hr  />
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline38" class="outline-3">
+<h3 id="property"><a id="orgheadline38"></a>Property macro</h3>
+<div class="outline-text-3" id="text-property">
+<p>
+The <code>property</code> macro outputs &#x2026;
+</p>
+</div>
+
+<div id="outline-container-orgheadline36" class="outline-4">
+<h4 id="orgheadline36">Parameters</h4>
+<div class="outline-text-4" id="text-orgheadline36">
+<ol class="org-ol">
+<li>Node property name.</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-orgheadline37" class="outline-4">
+<h4 id="orgheadline37">Examples</h4>
+<div class="outline-text-4" id="text-orgheadline37">
+<div class="org-src-container">
+
+<pre class="src src-org"><span class="org-org-level-1">* </span><span class="org-org-todo">TODO</span><span class="org-org-level-1"> Do it!</span>
+<span class="org-org-special-keyword">  :PROPERTIES:</span>
+  <span class="org-org-special-keyword">:Effort:</span>   <span class="org-org-property-value">1:00</span>
+<span class="org-org-special-keyword">  :END:</span>
+
+This task should take no more than <span class="org-org-macro">property(Effort)</span> hours.
+</pre>
+</div>
+
+<hr  />
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline42" class="outline-3">
+<h3 id="time"><a id="orgheadline42"></a>Time macro</h3>
+<div class="outline-text-3" id="text-time">
+<p>
+The <code>time</code> macro outputs the <b>current date and time</b> <i>when</i> the document is being
+exported.
+</p>
+</div>
+
+<div id="outline-container-orgheadline39" class="outline-4">
+<h4 id="orgheadline39">Parameters</h4>
+<div class="outline-text-4" id="text-orgheadline39">
+<ol class="org-ol">
+<li><b>Format string</b> understood by <code>format-time-string</code>.</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-orgheadline40" class="outline-4">
+<h4 id="orgheadline40">Examples</h4>
+<div class="outline-text-4" id="text-orgheadline40">
+<p>
+This document was last exported on: 2015-07-27 Mon 11:26.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline41" class="outline-4">
+<h4 id="orgheadline41">See also</h4>
+<div class="outline-text-4" id="text-orgheadline41">
+<ul class="org-ul">
+<li><a href="#date">date</a> macro.</li>
+<li><a href="#modification-time">modification-time</a> macro.</li>
+</ul>
+
+<hr  />
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline46" class="outline-3">
+<h3 id="title"><a id="orgheadline46"></a>Title macro</h3>
+<div class="outline-text-3" id="text-title">
+<p>
+The <code>title</code> macro outputs the document title.
+</p>
+</div>
+
+<div id="outline-container-orgheadline43" class="outline-4">
+<h4 id="orgheadline43">Parameters</h4>
+<div class="outline-text-4" id="text-orgheadline43">
+<p>
+None.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline44" class="outline-4">
+<h4 id="orgheadline44">Examples</h4>
+<div class="outline-text-4" id="text-orgheadline44">
+<p>
+The title of this document is: Org Macros.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline45" class="outline-4">
+<h4 id="orgheadline45">See also</h4>
+<div class="outline-text-4" id="text-orgheadline45">
+<p>
+Option <code>#+TITLE:</code>.
+</p>
+
+<hr  />
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline85" class="outline-2">
+<h2 id="orgheadline85">Basic formatting</h2>
+<div class="outline-text-2" id="text-orgheadline85">
+</div><div id="outline-container-orgheadline52" class="outline-3">
+<h3 id="bgcolor"><a id="orgheadline52"></a>BgColor macro</h3>
+<div class="outline-text-3" id="text-bgcolor">
+<p>
+The <code>bgcolor</code> macro allows you to change the background color of a block of text.
+</p>
+</div>
+
+<div id="outline-container-orgheadline48" class="outline-4">
+<h4 id="orgheadline48">Code</h4>
+<div class="outline-text-4" id="text-orgheadline48">
+<div class="org-src-container">
+
+<pre class="src src-org"><span class="org-org-meta-line">#+MACRO: bgcolor @@html:&lt;div style="background-color: $1;"&gt;$2&lt;/div&gt;@@</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline49" class="outline-4">
+<h4 id="orgheadline49">Parameters</h4>
+<div class="outline-text-4" id="text-orgheadline49">
+<ol class="org-ol">
+<li>Color name or hexadecimal code.</li>
+<li>Text you want to color.</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-orgheadline50" class="outline-4">
+<h4 id="orgheadline50">Examples</h4>
+<div class="outline-text-4" id="text-orgheadline50">
+<p>
+<div style="background-color: red;"> This information is important.</div>
+<div style="background-color: #E0E0E0;"> This other isn't.</div>
+</p>
+
+<p>
+Common color names are supported by most Org exporters (HTML, LaTeX):
+</p>
+
+<p>
+<div style="background-color: red;"> red</div>
+<div style="background-color: orange;"> orange</div>
+<div style="background-color: yellow;"> yellow</div>
+<div style="background-color: green;"> green</div>
+<div style="background-color: blue;"> blue</div>
+<div style="background-color: purple;"> purple</div>
+<div style="background-color: violet;"> violet</div>
+</p>
+
+<p>
+You can also use hexadecimal color codes:
+</p>
+
+<p>
+<div style="background-color: #FF0000;"> #FF0000</div>
+<div style="background-color: #00FF00;"> #00FF00</div>
+<div style="background-color: #0000FF;"> #0000FF</div>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline51" class="outline-4">
+<h4 id="orgheadline51">See also</h4>
+<div class="outline-text-4" id="text-orgheadline51">
+<ul class="org-ul">
+<li><a href="#color">color</a> macro</li>
+<li><a href="#highlight">highlight</a> macro</li>
+<li><a href="#hl">hl</a> macro</li>
+</ul>
+
+<hr  />
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline57" class="outline-3">
+<h3 id="color"><a id="orgheadline57"></a>Color macro</h3>
+<div class="outline-text-3" id="text-color">
+<p>
+The <code>color</code> macro allows you to change the foreground color of inline text.
+</p>
+</div>
+
+<div id="outline-container-orgheadline53" class="outline-4">
+<h4 id="orgheadline53">Code</h4>
+<div class="outline-text-4" id="text-orgheadline53">
+<div class="org-src-container">
+
+<pre class="src src-org"><span class="org-org-meta-line">#+MACRO: color @@html:&lt;span style="color: $1"&gt;$2&lt;/span&gt;@@@@latex:\textcolor{$1}{$2}@@</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline54" class="outline-4">
+<h4 id="orgheadline54">Parameters</h4>
+<div class="outline-text-4" id="text-orgheadline54">
+<ol class="org-ol">
+<li>Color name or hexadecimal code.</li>
+<li>Text you want to color.</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-orgheadline55" class="outline-4">
+<h4 id="orgheadline55">Examples</h4>
+<div class="outline-text-4" id="text-orgheadline55">
+<p>
+<span style="color: red"> This information is important.</span>
+<span style="color: #E0E0E0"> This other isn't.</span>
+</p>
+
+<p>
+Common color names are supported by most Org exporters (HTML, LaTeX):
+</p>
+
+<p>
+<span style="color: red"> red</span>
+<span style="color: orange"> orange</span>
+<span style="color: yellow"> yellow</span>
+<span style="color: green"> green</span>
+<span style="color: blue"> blue</span>
+<span style="color: purple"> purple</span>
+<span style="color: violet"> violet</span>
+</p>
+
+<p>
+You can also use hexadecimal color codes:
+</p>
+
+<p>
+<span style="color: #FF0000"> #FF0000</span>
+<span style="color: #00FF00"> #00FF00</span>
+<span style="color: #0000FF"> #0000FF</span>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline56" class="outline-4">
+<h4 id="orgheadline56">See also</h4>
+<div class="outline-text-4" id="text-orgheadline56">
+<ul class="org-ul">
+<li><a href="#bgcolor">bgcolor</a> macro</li>
+<li><a href="#highlight">highlight</a> macro</li>
+<li><a href="#hl">hl</a> macro</li>
+</ul>
+
+<hr  />
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline61" class="outline-3">
+<h3 id="fixme"><a id="orgheadline61"></a>Fixme macro</h3>
+<div class="outline-text-3" id="text-fixme">
+<p>
+The <code>fixme</code> macro inserts a &ldquo;Fix Me!&rdquo; image (with adequate CSS).
+</p>
+</div>
+
+<div id="outline-container-orgheadline58" class="outline-4">
+<h4 id="orgheadline58">Code</h4>
+<div class="outline-text-4" id="text-orgheadline58">
+<div class="org-src-container">
+
+<pre class="src src-org"><span class="org-org-meta-line">#+MACRO: fixme @@html:&lt;span class="fixme"&gt;</span><span class="org-leuven-highlight"><span class="org-org-meta-line">FIXME</span></span><span class="org-org-meta-line">&lt;/span&gt;@@</span>
+</pre>
+</div>
+
+<p>
+CSS example:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-css"><span class="org-css-selector">.</span><span class="org-leuven-highlight"><span class="org-css-selector">fixme</span></span><span class="org-css-selector"> </span>{
+    <span class="org-css-property">background</span>: #FFFF88 url(<span class="org-string">'../images/</span><span class="org-leuven-highlight"><span class="org-string">fixme</span></span><span class="org-string">.png'</span>) no-repeat top left;
+    <span class="org-css-property">color</span>: #CC0000;
+    <span class="org-css-property">display</span>: inline-block;
+    <span class="org-css-property">height</span>: 16px;
+    <span class="org-css-property">text-indent</span>: -9999px;
+    <span class="org-css-property">width</span>: 82px;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline59" class="outline-4">
+<h4 id="orgheadline59">Parameters</h4>
+<div class="outline-text-4" id="text-orgheadline59">
+<p>
+None.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline60" class="outline-4">
+<h4 id="orgheadline60">Examples</h4>
+<div class="outline-text-4" id="text-orgheadline60">
+<p>
+<span class="fixme">FIXME</span> Delete this&#x2026;
+</p>
+
+<p>
+Testing testing testing testing testing testing testing testing testing testing
+testing testing testing testing testing testing testing testing testing testing
+testing testing testing testing testing <span class="fixme">FIXME</span> testing testing testing
+testing testing testing testing testing testing testing testing testing testing
+testing testing testing testing testing testing testing testing testing testing
+testing testing
+</p>
+
+<hr  />
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline66" class="outline-3">
+<h3 id="highlight"><a id="orgheadline66"></a>Highlight macro</h3>
+<div class="outline-text-3" id="text-highlight">
+<p>
+The <code>highlight</code> macro allows you to change the background color of inline text.
+</p>
+</div>
+
+<div id="outline-container-orgheadline62" class="outline-4">
+<h4 id="orgheadline62">Code</h4>
+<div class="outline-text-4" id="text-orgheadline62">
+<div class="org-src-container">
+
+<pre class="src src-org"><span class="org-org-meta-line">#+MACRO: highlight @@html:&lt;span style="background-color: $1;"&gt;$2&lt;/span&gt;@@</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline63" class="outline-4">
+<h4 id="orgheadline63">Parameters</h4>
+<div class="outline-text-4" id="text-orgheadline63">
+<ol class="org-ol">
+<li>Color name or hexadecimal code.</li>
+<li>Text you want to color.</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-orgheadline64" class="outline-4">
+<h4 id="orgheadline64">Examples</h4>
+<div class="outline-text-4" id="text-orgheadline64">
+<p>
+<span style="background-color: red;"> This information is important.</span>
+<span style="background-color: #E0E0E0;"> This other isn't.</span>
+</p>
+
+<p>
+Common color names are supported by most Org exporters (HTML, LaTeX):
+</p>
+
+<p>
+<span style="background-color: red;"> red</span>
+<span style="background-color: orange;"> orange</span>
+<span style="background-color: yellow;"> yellow</span>
+<span style="background-color: green;"> green</span>
+<span style="background-color: blue;"> blue</span>
+<span style="background-color: purple;"> purple</span>
+<span style="background-color: violet;"> violet</span>
+</p>
+
+<p>
+You can also use hexadecimal color codes:
+</p>
+
+<p>
+<span style="background-color: #FF0000;"> #FF0000</span>
+<span style="background-color: #00FF00;"> #00FF00</span>
+<span style="background-color: #0000FF;"> #0000FF</span>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline65" class="outline-4">
+<h4 id="orgheadline65">See also</h4>
+<div class="outline-text-4" id="text-orgheadline65">
+<ul class="org-ul">
+<li><a href="#bgcolor">bgcolor</a> macro</li>
+<li><a href="#color">color</a> macro</li>
+<li><a href="#hl">hl</a> macro</li>
+</ul>
+
+<hr  />
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline71" class="outline-3">
+<h3 id="hl"><a id="orgheadline71"></a>Hl macro</h3>
+<div class="outline-text-3" id="text-hl">
+<p>
+The <code>hl</code> macro allows you to highlight text with a &ldquo;neon marker&rdquo; effect.
+</p>
+</div>
+
+<div id="outline-container-orgheadline67" class="outline-4">
+<h4 id="orgheadline67">Code</h4>
+<div class="outline-text-4" id="text-orgheadline67">
+<div class="org-src-container">
+
+<pre class="src src-org"><span class="org-org-meta-line">#+MACRO: hl {{{highlight(#FFFF00,$1)}}}</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline68" class="outline-4">
+<h4 id="orgheadline68">Parameters</h4>
+<div class="outline-text-4" id="text-orgheadline68">
+<ol class="org-ol">
+<li>Color name or hexadecimal code.</li>
+<li>Text you want to color.</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-orgheadline69" class="outline-4">
+<h4 id="orgheadline69">Examples</h4>
+<div class="outline-text-4" id="text-orgheadline69">
+<p>
+<span style="background-color: #FFFF00;">This information is important.</span>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline70" class="outline-4">
+<h4 id="orgheadline70">See also</h4>
+<div class="outline-text-4" id="text-orgheadline70">
+<ul class="org-ul">
+<li><a href="#bgcolor">bgcolor</a> macro</li>
+<li><a href="#color">color</a> macro</li>
+<li><a href="#highlight">highlight</a> macro</li>
+</ul>
+
+<hr  />
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline75" class="outline-3">
+<h3 id="loremipsum"><a id="orgheadline75"></a>LoremIpsum macro</h3>
+<div class="outline-text-3" id="text-loremipsum">
+<p>
+The <code>loremipsum</code> macro displays one paragraph of meaningless text that you can
+use for demonstration purposes of visual elements such as font, typography or
+layout.
+</p>
+</div>
+
+<div id="outline-container-orgheadline72" class="outline-4">
+<h4 id="orgheadline72">Code</h4>
+<div class="outline-text-4" id="text-orgheadline72">
+<div class="org-src-container">
+
+<pre class="src src-org"><span class="org-org-meta-line">#+MACRO: loremipsum Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline73" class="outline-4">
+<h4 id="orgheadline73">Parameters</h4>
+<div class="outline-text-4" id="text-orgheadline73">
+<p>
+None.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline74" class="outline-4">
+<h4 id="orgheadline74">Examples</h4>
+<div class="outline-text-4" id="text-orgheadline74">
+<p>
+This is a basic example of the <code>Loremipsum</code> text:
+</p>
+
+<p>
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+</p>
+
+<hr  />
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline79" class="outline-3">
+<h3 id="newline"><a id="orgheadline79"></a>Newline macro</h3>
+<div class="outline-text-3" id="text-newline">
+<p>
+<code>\\</code> in headlines doesn&rsquo;t cause a line break, but gets exported in LaTeX to
+<code>$\backslash$</code>.
+</p>
+
+<p>
+You have to put it in a macro.
+</p>
+</div>
+
+<div id="outline-container-orgheadline76" class="outline-4">
+<h4 id="orgheadline76">Code</h4>
+<div class="outline-text-4" id="text-orgheadline76">
+<div class="org-src-container">
+
+<pre class="src src-org"><span class="org-org-meta-line">#+MACRO: newline @@latex:\\@@ @@html:&lt;br&gt;@@</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline77" class="outline-4">
+<h4 id="orgheadline77">Parameters</h4>
+<div class="outline-text-4" id="text-orgheadline77">
+<p>
+None.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline78" class="outline-4">
+<h4 id="orgheadline78">Examples</h4>
+<div class="outline-text-4" id="text-orgheadline78">
+<div class="org-src-container">
+
+<pre class="src src-org"><span class="org-org-document-info-keyword">#+TITLE:</span> <span class="org-org-document-title">Foo newline bar</span>
+</pre>
+</div>
+
+<hr  />
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline80" class="outline-3">
+<h3 id="redact"><a id="orgheadline80"></a>Redact macro</h3>
+<div class="outline-text-3" id="text-redact">
+<p>
+Is there any way to completely redact text in HTML export, so it just looks like
+black boxes?
+</p>
+
+<p>
+I&rsquo;m not sure I fully understand, but it this what you are looking for?
+</p>
+
+<p>
+To <span class="redact" style="color:black; background-color:black;">redact</span> or not to <span class="redact" style="color:black; background-color:black;">redact</span> that is the question.
+</p>
+
+<hr  />
+</div>
+</div>
+
+<div id="outline-container-orgheadline84" class="outline-3">
+<h3 id="kbd"><a id="orgheadline84"></a>Kbd macro</h3>
+<div class="outline-text-3" id="text-kbd">
+</div>
+
+<div id="outline-container-orgheadline81" class="outline-4">
+<h4 id="orgheadline81">Code</h4>
+<div class="outline-text-4" id="text-orgheadline81">
+<div class="org-src-container">
+
+<pre class="src src-org"><span class="org-org-meta-line">#+MACRO: kbd @@html:&lt;kbd&gt;@@$1@@html:&lt;/kdb&gt;@@</span>
+</pre>
+</div>
+
+<p>
+See <code>menukeys</code> for LaTeX.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline82" class="outline-4">
+<h4 id="orgheadline82">Parameters</h4>
+<div class="outline-text-4" id="text-orgheadline82">
+<ol class="org-ol">
+<li>Text to markup.</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-orgheadline83" class="outline-4">
+<h4 id="orgheadline83">Examples</h4>
+<div class="outline-text-4" id="text-orgheadline83">
+<div class="org-src-container">
+
+<pre class="src src-org">Use <span class="org-org-macro">kbd(C-c a a)</span> to launch the agenda.
+</pre>
+</div>
+
+<hr  />
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline94" class="outline-2">
+<h2 id="orgheadline94">Advanced</h2>
+<div class="outline-text-2" id="text-orgheadline94">
+</div><div id="outline-container-orgheadline89" class="outline-3">
+<h3 id="if-latex-else"><a id="orgheadline89"></a>if-latex macro</h3>
+<div class="outline-text-3" id="text-if-latex-else">
+<p>
+XXX
+</p>
+</div>
+
+<div id="outline-container-orgheadline86" class="outline-4">
+<h4 id="orgheadline86">Code</h4>
+<div class="outline-text-4" id="text-orgheadline86">
+<div class="org-src-container">
+
+<pre class="src src-org"><span class="org-org-meta-line">#+MACRO: if-latex-else (eval (if (org-export-derived-backend-p org-export-current-backend 'latex) "$1" "$2"))</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline87" class="outline-4">
+<h4 id="orgheadline87">Parameters</h4>
+<div class="outline-text-4" id="text-orgheadline87">
+<ol class="org-ol">
+<li>Code for LaTeX back-end.</li>
+<li>Code for other back-ends.</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-orgheadline88" class="outline-4">
+<h4 id="orgheadline88">Examples</h4>
+<div class="outline-text-4" id="text-orgheadline88">
+<p>
+something else
+</p>
+
+<hr  />
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline93" class="outline-3">
+<h3 id="style"><a id="orgheadline93"></a>style</h3>
+<div class="outline-text-3" id="text-style">
+<p>
+The <code>style</code> macro allows you to add custom style sheets to a page or import from
+an external URL.
+</p>
+</div>
+
+<div id="outline-container-orgheadline90" class="outline-4">
+<h4 id="orgheadline90">Code</h4>
+<div class="outline-text-4" id="text-orgheadline90">
+<div class="org-src-container">
+
+<pre class="src src-org"><span class="org-org-meta-line">#+MACRO: style (eval (concat "#+HTML_HEAD_EXTRA: &lt;style&gt;&lt;/style&gt;"))</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline91" class="outline-4">
+<h4 id="orgheadline91">Parameters</h4>
+<div class="outline-text-4" id="text-orgheadline91">
+<p>
+URL to import an external style sheet.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline92" class="outline-4">
+<h4 id="orgheadline92">Examples</h4>
+<div class="outline-text-4" id="text-orgheadline92">
+<p>
+&lt;style type=&ldquo;text/css&rdquo;&gt;
+     .atb-sidebar.expanded {display:run-in;}
+     .atb-sidebar.collapsed {display:none;visibility:collapse;}
+ &lt;/style&gt;
+</p>
+
+<p>
+&lt;link type=&ldquo;text/css&rdquo; rel=&ldquo;stylesheet&rdquo; href=&ldquo;<a href="http://whatever.com/mystyle.css">http://whatever.com/mystyle.css</a>&rdquo; media=&ldquo;all&rdquo;&gt;
+</p>
+
+<hr  />
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline104" class="outline-2">
+<h2 id="orgheadline104">Generic</h2>
+<div class="outline-text-2" id="text-orgheadline104">
+</div><div id="outline-container-orgheadline98" class="outline-3">
+<h3 id="image"><a id="orgheadline98"></a>Image macro</h3>
+<div class="outline-text-3" id="text-image">
+<p>
+The <code>image</code> macro displays an image.
+</p>
+</div>
+
+<div id="outline-container-orgheadline95" class="outline-4">
+<h4 id="orgheadline95">Code</h4>
+<div class="outline-text-4" id="text-orgheadline95">
+<div class="org-src-container">
+
+<pre class="src src-org"><span class="org-org-meta-line">#+MACRO: image \includegraphics{$1}</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline96" class="outline-4">
+<h4 id="orgheadline96">Parameters</h4>
+<div class="outline-text-4" id="text-orgheadline96">
+<ol class="org-ol">
+<li>Path to image file.</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-orgheadline97" class="outline-4">
+<h4 id="orgheadline97">Examples</h4>
+<div class="outline-text-4" id="text-orgheadline97">
+<p>
+\includegraphics{}
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">\includegraphics{a.png}</td>
+<td class="org-left">\includegraphics{b.png}</td>
+</tr>
+
+<tr>
+<td class="org-left">\includegraphics{c.png}</td>
+<td class="org-left">\includegraphics{d.png}</td>
+</tr>
+</tbody>
+</table>
+
+<hr  />
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline103" class="outline-3">
+<h3 id="version-history"><a id="orgheadline103"></a>Version-history macro</h3>
+<div class="outline-text-3" id="text-version-history">
+<p>
+The <code>version-history</code> macro inserts the history of (the last 5) updates made to
+a document: version number, date, author and comment.
+</p>
+
+<p>
+XXX + link to View Changes?
+</p>
+</div>
+
+<div id="outline-container-orgheadline99" class="outline-4">
+<h4 id="orgheadline99">Code</h4>
+<div class="outline-text-4" id="text-orgheadline99">
+<div class="org-src-container">
+
+<pre class="src src-org"><span class="org-org-meta-line">#+name: version-history</span>
+<span class="org-org-block-begin-line">#+begin_src shell :exports none :results silent :colnames '(Version Date Author Comment)</span>
+git log --pretty=format:<span class="org-string">"%h%x09%ad%x09%an%x09%s"</span> --date=short | head -n 5
+<span class="org-org-block-end-line">#+end_src</span>
+
+<span class="org-org-meta-line">#+MACRO: version-history call_version-history[:eval yes]()[:eval yes :results table :colnames '(Version Date Author Comment)]</span>
+</pre>
+</div>
+
+<div class="tip">
+<p>
+We chose an inline Babel call so that the macro can be used in a paragraph.
+</p>
+
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline100" class="outline-4">
+<h4 id="orgheadline100">Parameters</h4>
+<div class="outline-text-4" id="text-orgheadline100">
+<p>
+None.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline101" class="outline-4">
+<h4 id="orgheadline101">Remarks</h4>
+<div class="outline-text-4" id="text-orgheadline101">
+<p>
+This only will work with <b>Git repositories</b>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline102" class="outline-4">
+<h4 id="orgheadline102">Examples</h4>
+<div class="outline-text-4" id="text-orgheadline102">
+<hr  />
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline139" class="outline-2">
+<h2 id="orgheadline139">Layout</h2>
+<div class="outline-text-2" id="text-orgheadline139">
+</div><div id="outline-container-orgheadline108" class="outline-3">
+<h3 id="collapse"><a id="orgheadline108"></a>Collapse macro</h3>
+<div class="outline-text-3" id="text-collapse">
+<p>
+The <code>collapse</code> macro inserts of collapsed block of text.
+</p>
+</div>
+
+<div id="outline-container-orgheadline105" class="outline-4">
+<h4 id="orgheadline105">Code</h4>
+</div>
+
+<div id="outline-container-orgheadline106" class="outline-4">
+<h4 id="orgheadline106">Parameters</h4>
+<div class="outline-text-4" id="text-orgheadline106">
+<p>
+None.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline107" class="outline-4">
+<h4 id="orgheadline107">Examples</h4>
+<div class="outline-text-4" id="text-orgheadline107">
+<p>
+{{{collapse(View details&#x2026;)
+This is a block of text that is collapsed by default.
+It can be expanded by clicking a link.
+}}}
+</p>
+
+<hr  />
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline113" class="outline-3">
+<h3 id="info"><a id="orgheadline113"></a>Info macro</h3>
+<div class="outline-text-3" id="text-info">
+<p>
+The <code>info</code> macro is useful for including helpful information.
+</p>
+</div>
+
+<div id="outline-container-orgheadline109" class="outline-4">
+<h4 id="orgheadline109">Code</h4>
+<div class="outline-text-4" id="text-orgheadline109">
+<div class="org-src-container">
+
+<pre class="src src-org"><span class="org-org-meta-line">#+MACRO: begin_info @@html:&lt;div class="info"&gt;&lt;p&gt;@@</span>
+<span class="org-org-meta-line">#+MACRO: end_info @@html:&lt;/p&gt;&lt;/div&gt;@@</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline110" class="outline-4">
+<h4 id="orgheadline110">Parameters</h4>
+<div class="outline-text-4" id="text-orgheadline110">
+<p>
+None.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline111" class="outline-4">
+<h4 id="orgheadline111">Examples</h4>
+<div class="outline-text-4" id="text-orgheadline111">
+<p>
+<div class="info"><p>
+<b>Info example</b> <br  />
+Did you know&#x2026;
+</p></div>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline112" class="outline-4">
+<h4 id="orgheadline112">Remarks</h4>
+<div class="outline-text-4" id="text-orgheadline112">
+<p>
+You&rsquo;d better use a &ldquo;special block&rdquo;, such as:
+</p>
+
+<pre class="example">
+#+begin_info
+*Info example* \\
+Did you know...
+#+end_info
+</pre>
+
+<hr  />
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline117" class="outline-3">
+<h3 id="minipage"><a id="orgheadline117"></a>MiniPage macro</h3>
+<div class="outline-text-3" id="text-minipage">
+</div>
+
+<div id="outline-container-orgheadline114" class="outline-4">
+<h4 id="orgheadline114">Code</h4>
+<div class="outline-text-4" id="text-orgheadline114">
+<div class="org-src-container">
+
+<pre class="src src-org"><span class="org-org-meta-line">#+MACRO: BeginMiniPage @&lt;div style="border:1px solid #aaaaaa;padding:10px;width:780px;margin-left:auto;margin-right:auto;"&gt;</span>
+<span class="org-org-meta-line">#+MACRO: EndMiniPage @&lt;/div&gt;</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline115" class="outline-4">
+<h4 id="orgheadline115">Parameters</h4>
+</div>
+
+<div id="outline-container-orgheadline116" class="outline-4">
+<h4 id="orgheadline116">Examples</h4>
+<div class="outline-text-4" id="text-orgheadline116">
+<hr  />
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline122" class="outline-3">
+<h3 id="note"><a id="orgheadline122"></a>Note macro</h3>
+<div class="outline-text-3" id="text-note">
+</div>
+
+<div id="outline-container-orgheadline118" class="outline-4">
+<h4 id="orgheadline118">Code</h4>
+<div class="outline-text-4" id="text-orgheadline118">
+<div class="org-src-container">
+
+<pre class="src src-org"><span class="org-org-meta-line">#+MACRO: begin_note @@html:&lt;div class="note"&gt;&lt;p&gt;@@</span>
+<span class="org-org-meta-line">#+MACRO: end_note @@html:&lt;/p&gt;&lt;/div&gt;@@</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline119" class="outline-4">
+<h4 id="orgheadline119">Parameters</h4>
+<div class="outline-text-4" id="text-orgheadline119">
+<p>
+None.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline120" class="outline-4">
+<h4 id="orgheadline120">Examples</h4>
+<div class="outline-text-4" id="text-orgheadline120">
+<p>
+<div class="note"><p>
+<b>Note example</b> <br  />
+This is a useful note&#x2026;
+</p></div>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline121" class="outline-4">
+<h4 id="orgheadline121">Remarks</h4>
+<div class="outline-text-4" id="text-orgheadline121">
+<p>
+You&rsquo;d better use a &ldquo;special block&rdquo;, such as:
+</p>
+
+<pre class="example">
+#+begin_note
+*Note example* \\
+This is a useful note...
+#+end_note
+</pre>
+
+<hr  />
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline127" class="outline-3">
+<h3 id="panel"><a id="orgheadline127"></a>Panel macro</h3>
+<div class="outline-text-3" id="text-panel">
+</div>
+
+<div id="outline-container-orgheadline123" class="outline-4">
+<h4 id="orgheadline123">Code</h4>
+<div class="outline-text-4" id="text-orgheadline123">
+<div class="org-src-container">
+
+<pre class="src src-org"><span class="org-org-meta-line">#+MACRO: begin_panel @@html:&lt;div class="panel"&gt;&lt;p&gt;@@</span>
+<span class="org-org-meta-line">#+MACRO: end_panel @@html:&lt;/p&gt;&lt;/div&gt;@@</span>
+</pre>
+</div>
+
+<p>
+XXX PanelHeader + PanelContent
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline124" class="outline-4">
+<h4 id="orgheadline124">Parameters</h4>
+<div class="outline-text-4" id="text-orgheadline124">
+<p>
+None.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline125" class="outline-4">
+<h4 id="orgheadline125">Examples</h4>
+<div class="outline-text-4" id="text-orgheadline125">
+<p>
+<div class="panel"><p>
+<b>Panel example</b> <br  />
+This is a formatted block of text&#x2026;
+</p></div>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline126" class="outline-4">
+<h4 id="orgheadline126">Remarks</h4>
+<div class="outline-text-4" id="text-orgheadline126">
+<p>
+You&rsquo;d better use a &ldquo;special block&rdquo;, such as:
+</p>
+
+<pre class="example">
+#+begin_panel
+*Panel example* \\
+This is a formatted block of text...
+#+end_panel
+</pre>
+
+<hr  />
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline132" class="outline-3">
+<h3 id="tip"><a id="orgheadline132"></a>Tip macro</h3>
+<div class="outline-text-3" id="text-tip">
+</div>
+
+<div id="outline-container-orgheadline128" class="outline-4">
+<h4 id="orgheadline128">Code</h4>
+<div class="outline-text-4" id="text-orgheadline128">
+<div class="org-src-container">
+
+<pre class="src src-org"><span class="org-org-meta-line">#+MACRO: begin_tip @@html:&lt;div class="tip"&gt;&lt;p&gt;@@</span>
+<span class="org-org-meta-line">#+MACRO: end_tip @@html:&lt;/p&gt;&lt;/div&gt;@@</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline129" class="outline-4">
+<h4 id="orgheadline129">Parameters</h4>
+<div class="outline-text-4" id="text-orgheadline129">
+<p>
+None.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline130" class="outline-4">
+<h4 id="orgheadline130">Examples</h4>
+<div class="outline-text-4" id="text-orgheadline130">
+<p>
+<div class="tip"><p>
+<b>Tip example</b> <br  />
+Try doing it this way&#x2026;
+</p></div>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline131" class="outline-4">
+<h4 id="orgheadline131">Remarks</h4>
+<div class="outline-text-4" id="text-orgheadline131">
+<p>
+You&rsquo;d better use a &ldquo;special block&rdquo;, such as:
+</p>
+
+<pre class="example">
+#+begin_tip
+*Tip example* \\
+Try doing it this way...
+#+end_tip
+</pre>
+
+<hr  />
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline137" class="outline-3">
+<h3 id="warning"><a id="orgheadline137"></a>Warning macro</h3>
+<div class="outline-text-3" id="text-warning">
+</div>
+
+<div id="outline-container-orgheadline133" class="outline-4">
+<h4 id="orgheadline133">Code</h4>
+<div class="outline-text-4" id="text-orgheadline133">
+<div class="org-src-container">
+
+<pre class="src src-org"><span class="org-org-meta-line">#+MACRO: begin_warning @@html:&lt;div class="warning"&gt;&lt;p&gt;@@</span>
+<span class="org-org-meta-line">#+MACRO: end_warning @@html:&lt;/p&gt;&lt;/div&gt;@@</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline134" class="outline-4">
+<h4 id="orgheadline134">Parameters</h4>
+<div class="outline-text-4" id="text-orgheadline134">
+<p>
+None.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline135" class="outline-4">
+<h4 id="orgheadline135">Examples</h4>
+<div class="outline-text-4" id="text-orgheadline135">
+<p>
+<div class="warning"><p>
+<b>Warning example</b> <br  />
+Be careful! Check that you have&#x2026;
+</p></div>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline136" class="outline-4">
+<h4 id="orgheadline136">Remarks</h4>
+<div class="outline-text-4" id="text-orgheadline136">
+<p>
+You&rsquo;d better use a &ldquo;special block&rdquo;, such as:
+</p>
+
+<pre class="example">
+#+begin_warning
+*Warning example* \\
+Be careful! Check that you have...
+#+end_warning
+</pre>
+
+<hr  />
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline138" class="outline-3">
+<h3 id="orgheadline138">Vertically aligning table row contents</h3>
+<div class="outline-text-3" id="text-orgheadline138">
+<p>
+I&rsquo;m trying to create a simple two-column table. The left column will show images
+of symbols used in the document, and the right column will explain what those
+images mean.
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption class="t-above"><span class="table-number">Table 1:</span> Document Symbols</caption>
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">This symbol indicates that the associated item is in a <i>normal</i> or <i>successful</i> state.</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">This symbol denotes a state of <i>concern</i> or <i>potential trouble</i> for the associated item.</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">This symbol indicates that the associated item is in a <i>severely troubled</i> or <i>non-functioning</i> state.</td>
+</tr>
+</tbody>
+</table>
+
+<hr  />
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline140" class="outline-2">
+<h2 id="orgheadline140">Navigation and lists</h2>
+<div class="outline-text-2" id="text-orgheadline140">
+<p>
+FIXME Problem with the tab title.
+</p>
+</div>
+
+<div id="outline-container-orgheadline148" class="outline-3">
+<h3 id="toc"><a id="orgheadline148"></a>Toc macro</h3>
+<div class="outline-text-3" id="text-toc">
+<p>
+Insert a table of contents.
+</p>
+</div>
+
+<div id="outline-container-orgheadline141" class="outline-4">
+<h4 id="orgheadline141">Code</h4>
+<div class="outline-text-4" id="text-orgheadline141">
+<div class="org-src-container">
+
+<pre class="src src-org"><span class="org-org-meta-line">#+MACRO: toc #+toc: headlines $1</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline142" class="outline-4">
+<h4 id="orgheadline142">Parameters</h4>
+<div class="outline-text-4" id="text-orgheadline142">
+<ol class="org-ol">
+<li>Number of headline levels.</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-orgheadline143" class="outline-4">
+<h4 id="orgheadline143">Remarks</h4>
+<div class="outline-text-4" id="text-orgheadline143">
+<p>
+The <code>toc</code> macro <b>can't be inlined</b> in text.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline147" class="outline-4">
+<h4 id="orgheadline147">Examples</h4>
+<div class="outline-text-4" id="text-orgheadline147">
+<p>
+Insert the TOC here, with one headline level:
+</p>
+
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgheadline4">Overview</a></li>
+<li><a href="#orgheadline16">Code</a></li>
+<li><a href="#orgheadline47">Org built-ins</a></li>
+<li><a href="#orgheadline85">Basic formatting</a></li>
+<li><a href="#orgheadline94">Advanced</a></li>
+<li><a href="#orgheadline104">Generic</a></li>
+<li><a href="#orgheadline139">Layout</a></li>
+<li><a href="#orgheadline140">Navigation and lists</a></li>
+<li><a href="#orgheadline144">Dev tools</a></li>
+<li><a href="#orgheadline145">Contributing</a></li>
+<li><a href="#orgheadline146">License</a></li>
+</ul>
+</div>
+</div>
+
+<hr  />
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline144" class="outline-2">
+<h2 id="orgheadline144">Dev tools</h2>
+<div class="outline-text-2" id="text-orgheadline144">
+</div><div id="outline-container-orgheadline152" class="outline-3">
+<h3 id="twitter-share-link-button"><a id="orgheadline152"></a>Twitter &ldquo;Share a link&rdquo;</h3>
+<div class="outline-text-3" id="text-twitter-share-link-button">
+<p>
+Add a &ldquo;Share a link&rdquo; button to your website.
+</p>
+</div>
+
+<div id="outline-container-orgheadline149" class="outline-4">
+<h4 id="orgheadline149">Code</h4>
+<div class="outline-text-4" id="text-orgheadline149">
+<div class="org-src-container">
+
+<pre class="src src-org"><span class="org-org-meta-line">#+MACRO: twitter-share-link-button @@html:&lt;script src="<a href="http://platform.twitter.com/widgets.js">http://platform.twitter.com/widgets.js</a>"&gt;&lt;/script&gt;&lt;a href="<a href="https://twitter.com/share">https://twitter.com/share</a>" class="twitter-share-button" data-via="$1"&gt;Tweet&lt;/a&gt;@@</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline150" class="outline-4">
+<h4 id="orgheadline150">Parameters</h4>
+<div class="outline-text-4" id="text-orgheadline150">
+<ol class="org-ol">
+<li>Username.</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-orgheadline151" class="outline-4">
+<h4 id="orgheadline151">Examples</h4>
+<div class="outline-text-4" id="text-orgheadline151">
+<p>
+Insert the Twitter &ldquo;Share a link&rdquo; button here:
+</p>
+
+<p>
+<script src="http://platform.twitter.com/widgets.js"></script><a href="https://twitter.com/share" class="twitter-share-button" data-via="f_niessen">Tweet</a>
+</p>
+
+<hr  />
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline145" class="outline-2">
+<h2 id="orgheadline145">Contributing</h2>
+<div class="outline-text-2" id="text-orgheadline145">
+</div><div id="outline-container-orgheadline153" class="outline-3">
+<h3 id="orgheadline153">Issues</h3>
+<div class="outline-text-3" id="text-orgheadline153">
+<p>
+Report issues and suggest features and improvements on the <a href="https://github.com/fniessen/org-macros/issues/new">GitHub issue tracker</a>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline154" class="outline-3">
+<h3 id="orgheadline154">Patches</h3>
+<div class="outline-text-3" id="text-orgheadline154">
+<p>
+I love contributions!  Patches under any form are always welcome!
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline155" class="outline-3">
+<h3 id="orgheadline155">Donations</h3>
+<div class="outline-text-3" id="text-orgheadline155">
+<p>
+If you like the org-macros project, you can show your appreciation and help
+support future development by making today a <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&amp;business=VCVAS6KPDQ4JC&amp;lc=BE&amp;item_number=org-macros&amp;currency_code=EUR&amp;bn=PP-DonationsBF:btn_donate_LG.gif:NonHosted">donation</a> through PayPal.
+</p>
+
+<p>
+Regardless of the donations, org-macros will always be free both as in beer and
+as in speech.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline146" class="outline-2">
+<h2 id="orgheadline146">License</h2>
+<div class="outline-text-2" id="text-orgheadline146">
+<p>
+Copyright (C) 2014-2015 Free Software Foundation, Inc.
+</p>
+
+<p>
+Author: Fabrice Niessen <br  />
+Keywords: org-mode macros
+</p>
+
+<p>
+This program is free software; you can redistribute it and/or modify it under
+the terms of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any later
+version.
+</p>
+
+<p>
+This program is distributed in the hope that it will be useful, but WITHOUT ANY
+WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
+A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+</p>
+
+<p>
+You should have received a copy of the GNU General Public License along with
+this program. If not, see <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.
+</p>
+
+<a href="http://opensource.org/licenses/GPL-3.0">
+  <img src="http://img.shields.io/:license-gpl-blue.svg" alt=":license-gpl-blue.svg" />
+</a>
+
+<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=VCVAS6KPDQ4JC&lc=BE&item_number=org%2dhtml%2dthemes&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donate_LG%2egif%3aNonHosted">
+  <img src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" alt="btn_donate_LG.gif" />
+</a>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2015-05-11 12:34</p>
+<p class="author">Author: Fabrice Niessen</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

@@ -225,6 +225,7 @@
 (global-set-key [(meta right)] 'shrink-window-horizontally)
 (put 'narrow-to-region 'disabled nil)
 
+(require 'ede/proj-prog) ;; some bug fix when reopen EDE project
 ;; faces
 (set-face-background 'mode-line "#0F1A5C")
 (set-face-foreground 'mode-line-buffer-id "#DC314C")
