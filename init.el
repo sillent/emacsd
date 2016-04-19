@@ -68,7 +68,10 @@
 
 (require 'autopair)
 (require 'setup-org)
-
+(require 'custom-font)
+(require 'linum+)
+(setq linum-format "%d ")
+(global-linum-mode 1)
 (windmove-default-keybindings)
 
 ;; function-args
@@ -80,7 +83,7 @@
 ;; company
 (require 'company)
 (add-hook 'after-init-hook 'global-company-mode)
-(delete 'company-semantic company-backends)
+;; (delete 'company-semantic company-backends)
 (define-key c-mode-map  [(tab)] 'company-complete)
 (define-key c++-mode-map  [(tab)] 'company-complete)
 ;; (define-key c-mode-map  [(control tab)] 'company-complete)
@@ -240,3 +243,4 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+(setq-default abbrev-mode nil)
