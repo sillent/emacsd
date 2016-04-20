@@ -72,6 +72,7 @@
 (require 'custom-font)
 (require 'linum+)
 (require 'cmake)
+(require 'myfuncs)
 (setq linum-format "%d ")
 (global-linum-mode 1)
 (windmove-default-keybindings)
