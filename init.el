@@ -40,7 +40,8 @@
     magit
     magit-popup
     yaml-mode
-    zygospore))
+    zygospore
+    cmake-mode))
 
 (defun install-packages ()
   "Install all required packages."
@@ -70,6 +71,7 @@
 (require 'setup-org)
 (require 'custom-font)
 (require 'linum+)
+(require 'cmake)
 (setq linum-format "%d ")
 (global-linum-mode 1)
 (windmove-default-keybindings)
