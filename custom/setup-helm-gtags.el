@@ -1,8 +1,8 @@
 (require 'helm-gtags)
 
 (setq
- helm-gtags-ignore-case t
- helm-gtags-auto-update t
+ helm-gtags-ignore-case t               ; ignore case in seearch
+ helm-gtags-auto-update t               ; auto update file TAG on save
  helm-gtags-use-input-at-cursor t
  helm-gtags-pulse-at-cursor t
  helm-gtags-prefix-key "\C-cg"

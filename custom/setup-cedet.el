@@ -19,4 +19,6 @@
 (require 'ede)
 (global-ede-mode)
 
+(require 'ede/proj-prog) ;; some bug fix when reopen EDE project
+
 (provide 'setup-cedet)
