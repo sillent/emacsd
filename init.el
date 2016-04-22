@@ -1,67 +1,34 @@
 ;; me
 (setq user-full-name "Dmitry Ulyanov")
 (setq user-mail-address "sillent1987@gmail.com")
-
-(require 'package)
-(add-to-list 'package-archives
-	     '("melpa" . "http://melpa.milkbox.net/packages/") t)
-(package-initialize)
+;; PATH set
+(setq mypath (concat "~/bin:"
+                     "/bin:"
+                     "/usr/bin:"
+                     "/usr/sbin:"
+                     "/sbin:"
+                     "/usr/local/bin:"
+                     "/usr/local/sbin:"
+                     "/opt/bin:"
+                     "/opt/sbin:"
+                     ))
+(setenv "PATH" mypath)
 
 (setq gc-cons-threshold 100000000)
 (setq inhibit-startup-message t)
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 
-(defconst demo-packages
-  '(anzu
-    company
-    company-ansible
-    company-shell
-    company-c-headers
-    duplicate-thing
-    ggtags
-    helm
-    helm-make
-    autopair
-    helm-gtags
-    helm-projectile
-    helm-swoop
-    ;; function-args
-    clean-aindent-mode
-    comment-dwim-2
-    dtrt-indent
-    ws-butler
-    iedit
-    yasnippet
-    smartparens
-    projectile
-    volatile-highlights
-    undo-tree
-    magit
-    magit-popup
-    yaml-mode
-    zygospore
-    cmake-mode))
-
-(defun install-packages ()
-  "Install all required packages."
-  (interactive)
-  (unless package-archive-contents
-    (package-refresh-contents))
-  (dolist (package demo-packages)
-    (unless (package-installed-p package)
-      (package-install package))))
-
-(install-packages)
 
 ;; this variables must be set before load helm-gtags
 ;; you can change to any prefix key of your choice
 (setq helm-gtags-prefix-key "\C-cg")
 
 (add-to-list 'load-path "~/.emacs.d/custom")
-
-(require 'setup-helm)
-(require 'setup-helm-gtags)
+(require 'setup-package)                ; setup package manager and install package
+(require 'setup-linum)                  ; setup mod : linum+
+(require 'setup-helm)                   ; setup 'helm' mod
+(require 'setup-helm-gtags)             ; setup gtags
 ;; (require 'setup-ggtags)
 (require 'setup-cedet)
 (require 'setup-editing)
@@ -70,11 +37,10 @@
 (require 'autopair)
 (require 'setup-org)
 (require 'custom-font)
-(require 'linum+)
+
 (require 'cmake)
 (require 'myfuncs)
-(setq linum-format "%d ")
-(global-linum-mode 1)
+
 (windmove-default-keybindings)
 
 ;; function-args
@@ -86,7 +52,8 @@
 ;; company
 (require 'company)
 (add-hook 'after-init-hook 'global-company-mode)
-;; (delete 'company-semantic company-backends)
+(delete 'company-semantic company-backends)
+;; (delete 'company-clang company-backends)
 (define-key c-mode-map  [(tab)] 'company-complete)
 (define-key c++-mode-map  [(tab)] 'company-complete)
 ;; (define-key c-mode-map  [(control tab)] 'company-complete)
@@ -186,15 +153,14 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
-;; '(ansi-color-names-vector
-;;   ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
- '(custom-enabled-themes (quote (wombat))))
+ '(custom-enabled-themes (quote (wombat)))
+ )
  ;;'(custom-safe-themes
    ;;(quote
     ;;("7ceb8967b229c1ba102378d3e2c5fef20ec96a41f615b454e0dc0bfa1d326ea6" default))))
-(show-paren-mode t)
-(setq show-paren-style 'expression)
-(electric-pair-mode t);; { } pair mode
+;; (show-paren-mode t)
+;; (setq show-paren-style 'expression)
+;; (electric-pair-mode t);; { } pair mode
 (setq inhibit-startup-screen t)
 (setq inhibit-splash-screen t)
 (column-number-mode t)
@@ -231,7 +197,6 @@
 (global-set-key [(meta right)] 'shrink-window-horizontally)
 (put 'narrow-to-region 'disabled nil)
 
-(require 'ede/proj-prog) ;; some bug fix when reopen EDE project
 ;; faces
 (set-face-background 'mode-line "#0F1A5C")
 (set-face-foreground 'mode-line-buffer-id "#DC314C")
@@ -246,4 +211,4 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
-(setq-default abbrev-mode nil)
+;; (setq-default abbrev-mode nil)
