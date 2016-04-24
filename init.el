@@ -29,7 +29,7 @@
 (require 'setup-linum)                  ; setup mod : linum+
 (require 'setup-helm)                   ; setup 'helm' mod
 (require 'setup-helm-gtags)             ; setup gtags
-;; (require 'setup-ggtags)
+(require 'setup-ggtags)
 (require 'setup-cedet)
 (require 'setup-editing)
 (require 'setup-helm-swoop)
@@ -49,19 +49,7 @@
 ;; (define-key c-mode-map  [(tab)] 'company-complete)
 ;; (define-key c++-mode-map  [(tab)] 'company-complete)
 
-;; company
-(require 'company)
-(add-hook 'after-init-hook 'global-company-mode)
-(delete 'company-semantic company-backends)
-;; (delete 'company-clang company-backends)
-(define-key c-mode-map  [(tab)] 'company-complete)
-(define-key c++-mode-map  [(tab)] 'company-complete)
-;; (define-key c-mode-map  [(control tab)] 'company-complete)
-;; (define-key c++-mode-map  [(control tab)] 'company-complete)
-
-;; company-c-headers
-(add-to-list 'company-backends 'company-c-headers)
-
+(require 'setup-company)
 ;; hs-minor-mode for folding source code
 (add-hook 'c-mode-common-hook 'hs-minor-mode)
 
@@ -154,7 +142,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes (quote (wombat)))
- )
+ '(safe-local-variable-values (quote ((company-clang-arguments "-Iinclude")))))
  ;;'(custom-safe-themes
    ;;(quote
     ;;("7ceb8967b229c1ba102378d3e2c5fef20ec96a41f615b454e0dc0bfa1d326ea6" default))))
