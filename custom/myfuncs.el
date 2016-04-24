@@ -22,4 +22,5 @@
   (append-to-file "(( nil . ((company-clang-arguments . (\"-I\")))))" nil ".dir-locals.el")
   )
 
+(setq enable-local-variables nil)
 (provide 'myfuncs)
