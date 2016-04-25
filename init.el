@@ -29,7 +29,7 @@
 (require 'setup-linum)                  ; setup mod : linum+
 (require 'setup-helm)                   ; setup 'helm' mod
 (require 'setup-helm-gtags)             ; setup gtags
-(require 'setup-ggtags)
+;; (require 'setup-ggtags)
 (require 'setup-cedet)
 (require 'setup-editing)
 (require 'setup-helm-swoop)
@@ -141,8 +141,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-enabled-themes (quote (wombat)))
- '(safe-local-variable-values (quote ((company-clang-arguments "-Iinclude")))))
+ '(custom-enabled-themes (quote (wombat))))
  ;;'(custom-safe-themes
    ;;(quote
     ;;("7ceb8967b229c1ba102378d3e2c5fef20ec96a41f615b454e0dc0bfa1d326ea6" default))))
