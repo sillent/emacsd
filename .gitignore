@@ -1,0 +1,9 @@
+*~
+elpa/*
+semanticdb/*
+eshell/*
+tramp
+ede-projects.el
+bookmarks
+projectile*
+recentf
