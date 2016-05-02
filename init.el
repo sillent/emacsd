@@ -13,7 +13,18 @@
                      "/opt/sbin:"
                      ))
 (setenv "PATH" mypath)
-
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-enabled-themes (quote (wombat)))
+ '(custom-safe-themes
+   (quote
+    ("3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" default))))
+ ;;'(custom-safe-themes
+   ;;(quote
+    ;;("7ceb8967b229c1ba102378d3e2c5fef20ec96a41f615b454e0dc0bfa1d326ea6" default))))
 (setq gc-cons-threshold 100000000)
 (setq inhibit-startup-message t)
 
@@ -26,7 +37,7 @@
 
 (add-to-list 'load-path "~/.emacs.d/custom")
 (require 'setup-package)                ; setup package manager and install package
-(require 'setup-linum)                  ; setup mod : linum+
+;; (require 'setup-linum)                  ; setup mod : linum+
 (require 'setup-helm)                   ; setup 'helm' mod
 (require 'setup-helm-gtags)             ; setup gtags
 ;; (require 'setup-ggtags)
@@ -37,7 +48,7 @@
 (require 'autopair)
 (require 'setup-org)
 (require 'custom-font)
-
+(require 'setup-modeline)
 (require 'cmake)
 (require 'myfuncs)
 
@@ -136,15 +147,7 @@
 ;; Package zygospore
 (global-set-key (kbd "C-x 1") 'zygospore-toggle-delete-other-windows)
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-enabled-themes (quote (wombat))))
- ;;'(custom-safe-themes
-   ;;(quote
-    ;;("7ceb8967b229c1ba102378d3e2c5fef20ec96a41f615b454e0dc0bfa1d326ea6" default))))
+
 ;; (show-paren-mode t)
 ;; (setq show-paren-style 'expression)
 ;; (electric-pair-mode t);; { } pair mode
@@ -185,13 +188,13 @@
 (put 'narrow-to-region 'disabled nil)
 
 ;; faces
-(set-face-background 'mode-line "#0F1A5C")
-(set-face-foreground 'mode-line-buffer-id "#DC314C")
-(set-face-background 'mode-line-buffer-id "#0F1A5C")
+;; (set-face-background 'mode-line "#0F1A5C")
+;; (set-face-foreground 'mode-line-buffer-id "#DC314C")
+;; (set-face-background 'mode-line-buffer-id "#0F1A5C")
 
-(set-face-background 'mode-line-inactive "#B7BDDF")
-(set-face-background 'isearch "#ABE6F1")
-(set-face-foreground 'isearch "#0F1A5C")
+;; (set-face-background 'mode-line-inactive "#B7BDDF")
+;; (set-face-background 'isearch "#ABE6F1")
+;; (set-face-foreground 'isearch "#0F1A5C")
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -199,3 +202,4 @@
  ;; If there is more than one, they won't work right.
  )
 ;; (setq-default abbrev-mode nil)
+

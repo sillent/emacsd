@@ -31,7 +31,10 @@
     magit-popup
     yaml-mode
     zygospore
-    cmake-mode))
+    cmake-mode
+    powerline
+    smart-mode-line
+    smart-mode-line-powerline-theme))
 
 (defun install-packages ()
   "Install all required packages."

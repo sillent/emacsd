@@ -1,3 +1,3 @@
-(set-default-font "Terminus-14")
+(set-default-font "Terminus-12")
 
 (provide 'custom-font)
