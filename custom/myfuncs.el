@@ -22,5 +22,17 @@
   (append-to-file "(( nil . ((company-clang-arguments . (\"-I\")))))" nil ".dir-locals.el")
   )
 
+(defun lteFunc(number-search)
+  (interactive "nNumber: ")
+  (message (number-to-string number-search))
+  (save-excursion
+    (search-forward-regexp (concat "^" (number-to-string number-search)))
+    (backward-char 1)
+    (if (equal number-search 7)
+        (setq myurl "wget \"http://10.77.93.232:3000/lte/add?msisdn=")
+      (setq myurl "wget \" ttp://10.77.93.232:3000/lte/add?msisdn=7"))
+    (insert myurl)
+    ))
+
 (setq enable-local-variables t)
 (provide 'myfuncs)
