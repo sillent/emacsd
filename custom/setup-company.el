@@ -1,7 +1,7 @@
 ;; company
 (setq company-c-headers-path-system '("/usr/include" "/usr/local/include"))
-(setq company-c-headers-path-user '("." "./include"))
-(setq company-clang-arguments '("-I." "-I./include"))
+(setq company-c-headers-path-user '("." "./include" "../include"))
+(setq company-clang-arguments '("-I." "-I./include" "-I../include"))
 (require 'company)
 
 (add-hook 'after-init-hook 'global-company-mode)
