@@ -131,6 +131,9 @@
 (require 'iedit)
 (global-set-key (kbd "C-;") 'iedit-mode)
 
+;; PACKAGE: beacon (colorized MARK position)
+(beacon-mode t)
+
 ;; PACKAGE: duplicate-thing
 (require 'duplicate-thing)
 (global-set-key (kbd "M-c") 'duplicate-thing)

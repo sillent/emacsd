@@ -29,6 +29,7 @@
     undo-tree
     magit
     magit-popup
+    beacon
     yaml-mode
     zygospore
     cmake-mode

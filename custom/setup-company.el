@@ -25,4 +25,5 @@
 (if (string-equal system-type "darwin")
     (darwinInclude)
   )
+(require 'setup-env)
 (provide 'setup-company)
