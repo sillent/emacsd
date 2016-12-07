@@ -49,6 +49,7 @@
 (require 'setup-org)
 (require 'custom-font)
 (require 'setup-modeline)
+(require 'setup-flycheck)
 (require 'cmake)
 (require 'myfuncs)
 

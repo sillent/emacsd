@@ -34,6 +34,7 @@
     zygospore
     cmake-mode
     powerline
+    flycheck
     smart-mode-line
     smart-mode-line-powerline-theme))
 
