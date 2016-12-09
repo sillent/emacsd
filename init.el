@@ -1,6 +1,7 @@
 ;; me
 (setq user-full-name "Dmitry Ulyanov")
 (setq user-mail-address "sillent1987@gmail.com")
+(setq url-proxy-services '(("http" . "10.77.52.10:3129")))
 ;; PATH set
 (setq mypath (concat "~/bin:"
                      "/bin:"
@@ -21,7 +22,8 @@
  '(custom-enabled-themes (quote (wombat)))
  '(custom-safe-themes
    (quote
-    ("3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" default))))
+    ("3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" default)))
+ '(org-agenda-files (quote ("~/work/tasks.org"))))
  ;;'(custom-safe-themes
    ;;(quote
     ;;("7ceb8967b229c1ba102378d3e2c5fef20ec96a41f615b454e0dc0bfa1d326ea6" default))))
@@ -51,6 +53,7 @@
 (require 'setup-modeline)
 (require 'cmake)
 (require 'myfuncs)
+(require 'setup-python)
 
 (windmove-default-keybindings)
 
