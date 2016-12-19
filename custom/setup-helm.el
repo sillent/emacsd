@@ -1,3 +1,6 @@
+;;; setup-helm.el --- Setup helm
+;;; Commentary:
+;;; Code:
 (require 'helm-config)
 (require 'helm-grep)
 
@@ -95,3 +98,4 @@
 (helm-mode 1)
 
 (provide 'setup-helm)
+;;; setup-helm.el ends here

@@ -1,3 +1,8 @@
+;;; setup-package.el --- Setup package for Emacs
+;;; Author: Dmitry Ulyanov
+;;; Email: siilent1987@yahoo.com
+;;; Commentary:
+;;; Code:
 (require 'package)
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.milkbox.net/packages/") t)
@@ -8,6 +13,7 @@
     company-ansible
     company-shell
     company-c-headers
+    company-jedi
     duplicate-thing
     ggtags
     helm
@@ -35,6 +41,10 @@
     cmake-mode
     powerline
     flycheck
+    jedi
+    jedi-core
+    ivy
+    elpy
     smart-mode-line
     smart-mode-line-powerline-theme))
 
@@ -51,3 +61,4 @@
 
 
 (provide 'setup-package)
+;;; setup-package.el ends here

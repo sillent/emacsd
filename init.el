@@ -1,4 +1,9 @@
-;; me
+;;; init.el --- Init Emacs configuration
+;;; Commentary:
+;;; This is my emacs.d/init.el configuration
+;;; Author: Dmitry Ulyanov
+;;; Email: siilent1987@yahoo.com
+;;; Code:
 (setq user-full-name "Dmitry Ulyanov")
 (setq user-mail-address "sillent1987@gmail.com")
 ;; PATH set
@@ -204,3 +209,4 @@
  )
 ;; (setq-default abbrev-mode nil)
 
+;;; init.el ends here
