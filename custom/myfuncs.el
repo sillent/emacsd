@@ -1,3 +1,7 @@
+;;; myfuncs.el --- My function scripts
+;;; Commentary:
+;;;
+;;; Code:
 (setq helm-boring-buffer-regexp-list '("\\` " "\\*helm" "\\*helm-mode" "\\*Echo Area" "\\*Minibuf"))
 ;; (setenv "GTAGSDBPATH" "/home/santa/.gtags/" )
 
@@ -36,3 +40,8 @@
 
 (setq enable-local-variables t)
 (provide 'myfuncs)
+
+;;; myfuncs.el ends here
+;;; Local Variables:
+;;; byte-compile-warnings: (not free-vars)
+;;; End:
