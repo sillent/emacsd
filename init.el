@@ -7,7 +7,8 @@
 (setq user-full-name "Dmitry Ulyanov")
 (setq user-mail-address "sillent1987@gmail.com")
 ;; PATH set
-(setq mypath (concat "~/bin:"
+(defvar my-path)
+(setq my-path (concat "~/bin:"
                      "/bin:"
                      "/usr/bin:"
                      "/usr/sbin:"
@@ -17,7 +18,7 @@
                      "/opt/bin:"
                      "/opt/sbin:"
                      ))
-(setenv "PATH" mypath)
+(setenv "PATH" my-path)
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -38,6 +39,7 @@
 
 ;; this variables must be set before load helm-gtags
 ;; you can change to any prefix key of your choice
+(defvar helm-gtags-prefix-key)
 (setq helm-gtags-prefix-key "\C-cg")
 
 (add-to-list 'load-path "~/.emacs.d/custom")
