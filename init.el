@@ -59,6 +59,8 @@
 (require 'setup-flycheck)
 (require 'cmake)
 (require 'myfuncs)
+;; setup python
+(require 'setup-python)
 
 (windmove-default-keybindings)
 
