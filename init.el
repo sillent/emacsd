@@ -133,6 +133,7 @@
 ;; Package: yasnippet
 (require 'yasnippet)
 (yas-global-mode 1)
+(setq yas-verbosity 0)
 
 ;; Package: smartparens
 (require 'smartparens-config)
