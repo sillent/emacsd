@@ -61,6 +61,7 @@
 (require 'myfuncs)
 ;; setup python
 (require 'setup-python)
+(require 'setup-magit)
 
 (windmove-default-keybindings)
 

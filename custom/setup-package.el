@@ -45,6 +45,7 @@
     jedi-core
     ivy
     elpy
+    py-autopep8
     smart-mode-line
     smart-mode-line-powerline-theme))
 
