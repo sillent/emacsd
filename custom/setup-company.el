@@ -1,4 +1,7 @@
-;; company
+;;; setup-company.el --- Setup company
+;;; Commentary:
+;;; company
+;;; Code:
 (setq company-c-headers-path-system '("/usr/include" "/usr/local/include"))
 (setq company-c-headers-path-user '("." "./include" "../include"))
 (setq company-clang-arguments '("-I." "-I./include" "-I../include"))
@@ -27,3 +30,4 @@
   )
 (require 'setup-env)
 (provide 'setup-company)
+;;; setup-company.el ends here

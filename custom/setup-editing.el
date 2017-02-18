@@ -1,5 +1,7 @@
+;;; setup-editing.el --- Editing setup
+;;; Commentary:
 ;; GROUP: Editing -> Editing Basics
-
+;;; Code:
 (setq global-mark-ring-max 5000         ; increase mark ring to contains 5000 entries
       mark-ring-max 5000                ; increase kill ring to contains 5000 entries
       mode-require-final-newline t      ; add a newline to end of file
@@ -299,3 +301,4 @@ Position the cursor at it's beginning, according to the current mode."
 (global-set-key (kbd "M-o") 'open-line)
 
 (provide 'setup-editing)
+;;; setup-editing.el ends here

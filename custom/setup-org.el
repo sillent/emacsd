@@ -1,3 +1,6 @@
+;;; setup-org.el --- Setup ORG mode
+;;; Commentary:
+;;; Code:
 (setq org-todo-keywords
       '((sequence "К работе" "Принята в работу" "Отклонена" "|" "Завершена" "Переназначена" "Делегирована")))
 (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode)) ; auto org-mode for *.org files
@@ -7,3 +10,4 @@
 (global-set-key "\C-cb" 'org-iswitchb)
 
 (provide 'setup-org)
+;;; setup-org.el ends here
