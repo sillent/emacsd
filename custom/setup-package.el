@@ -22,6 +22,7 @@
     helm-gtags
     helm-projectile
     helm-swoop
+    helm-flycheck
     ;; function-args
     clean-aindent-mode
     comment-dwim-2

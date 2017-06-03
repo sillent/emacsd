@@ -1,3 +1,7 @@
+;;; setup-ggtags.el --- Setup ggtags
+;;; Commentary:
+;;; Code:
+
 (require 'ggtags)
 (add-hook 'c-mode-common-hook
           (lambda ()
@@ -14,3 +18,4 @@
 (define-key ggtags-mode-map (kbd "M-,") 'pop-tag-mark)
 
 (provide 'setup-ggtags)
+;;; setup-ggtags.el ends here

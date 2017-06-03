@@ -1,3 +1,7 @@
+;;; setup-helm-gtags.el --- Helm (gtags)
+;;; Commentary:
+;;; Code:
+
 (require 'helm-gtags)
 
 (setq
@@ -31,3 +35,4 @@
 (define-key helm-gtags-mode-map (kbd "C-c >") 'helm-gtags-next-history)
 
 (provide 'setup-helm-gtags)
+;;; setup-helm-gtags.el ends here
