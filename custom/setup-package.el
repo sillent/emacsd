@@ -46,6 +46,7 @@
     ivy
     elpy
     py-autopep8
+    importmagic
     smart-mode-line
     smart-mode-line-powerline-theme))
 
