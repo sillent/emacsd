@@ -48,6 +48,7 @@
     elpy
     py-autopep8
     importmagic
+    django-mode
     smart-mode-line
     smart-mode-line-powerline-theme))
 
