@@ -20,14 +20,14 @@
 
 (defun darwinInclude()
   "List Include directives in darwin"
-  (add-to-list 'company-c-headers-path-system "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/7.3.0/include" )
+  (add-to-list 'company-c-headers-path-system "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.0.0/include")
   (add-to-list 'company-c-headers-path-system "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include")
-  (add-to-list 'company-c-headers-path-system "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/usr/include")
+  (add-to-list 'company-c-headers-path-system "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/include")
   )
 
-(if (string-equal system-type "darwin")
-    (darwinInclude)
-  )
+;; (if (string-equal system-type "darwin")
+;;     (darwinInclude)
+;;   )
 (require 'setup-env)
 (provide 'setup-company)
 ;;; setup-company.el ends here
