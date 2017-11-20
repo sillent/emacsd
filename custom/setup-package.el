@@ -34,6 +34,7 @@
     projectile
     volatile-highlights
     undo-tree
+    bbdb
     magit
     magit-popup
     beacon
