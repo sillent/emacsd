@@ -4,11 +4,19 @@
 ;;; Author: Dmitry Ulyanov
 ;;; Email: siilent1987@yahoo.com
 ;;; Code:
+
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
+(package-initialize)
+
 (setq user-full-name "Dmitry Ulyanov")
 (setq user-mail-address "sillent1987@gmail.com")
 ;; PATH set
 (defvar my-path)
 (setq my-path (concat "~/bin:"
+                     "~/.local/bin:"
                      "/bin:"
                      "/usr/bin:"
                      "/usr/sbin:"
