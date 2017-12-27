@@ -51,7 +51,8 @@
     importmagic
     django-mode
     smart-mode-line
-    smart-mode-line-powerline-theme))
+    smart-mode-line-powerline-theme
+    confluence))
 
 (defun install-packages ()
   "Install all required packages."
