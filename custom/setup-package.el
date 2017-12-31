@@ -50,6 +50,7 @@
     py-autopep8
     importmagic
     django-mode
+    neotree
     smart-mode-line
     smart-mode-line-powerline-theme))
 

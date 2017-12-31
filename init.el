@@ -58,6 +58,7 @@
 ;; (require 'setup-ggtags)
 (require 'setup-cedet)
 (require 'setup-editing)
+(require 'setup-neotree)
 (require 'setup-helm-swoop)
 
 (require 'autopair)
