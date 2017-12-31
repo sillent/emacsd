@@ -4,5 +4,5 @@
 ;;; Code:
 (require 'neotree)
 (global-set-key [f8] 'neotree-toggle)
-(provide 'custom-neotree)
+(provide 'setup-neotree)
 ;;; setup-neotree.el ends here
