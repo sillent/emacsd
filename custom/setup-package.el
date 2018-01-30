@@ -51,9 +51,10 @@
     importmagic
     django-mode
     neotree
+    all-the-icons
+    all-the-icons-dired
     smart-mode-line
-    smart-mode-line-powerline-theme
-    confluence))
+    smart-mode-line-powerline-theme))
 
 (defun install-packages ()
   "Install all required packages."

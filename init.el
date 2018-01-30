@@ -58,6 +58,7 @@
 ;; (require 'setup-ggtags)
 (require 'setup-cedet)
 (require 'setup-editing)
+(require 'setup-icons)
 (require 'setup-neotree)
 (require 'setup-helm-swoop)
 
@@ -164,6 +165,8 @@
 (helm-projectile-on)
 (setq projectile-completion-system 'helm)
 (setq projectile-indexing-method 'alien)
+
+(require 'setup-rpm-spec)
 
 ;; Package zygospore
 (global-set-key (kbd "C-x 1") 'zygospore-toggle-delete-other-windows)
