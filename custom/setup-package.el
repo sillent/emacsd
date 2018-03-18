@@ -53,6 +53,7 @@
     neotree
     all-the-icons
     all-the-icons-dired
+    web-mode
     smart-mode-line
     smart-mode-line-powerline-theme))
 

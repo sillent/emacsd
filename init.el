@@ -63,6 +63,7 @@
 ;; setup python
 (require 'setup-python)
 (require 'setup-magit)
+(require 'setup-webmode)
 
 (windmove-default-keybindings)
 
