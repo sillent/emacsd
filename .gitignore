@@ -8,3 +8,7 @@ bookmarks
 projectile*
 recentf
 custom.el
+games/
+url/
+*.dat
+.python-environments/
