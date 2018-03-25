@@ -5,6 +5,7 @@
 ;;; Email: siilent1987@yahoo.com
 ;;; Code:
 
+
 ;; Added by Package.el.  This must come before configurations of
 ;; installed packages.  Don't delete this line.  If you don't want it,
 ;; just comment it out by adding a semicolon to the start of the line.
@@ -27,14 +28,16 @@
                      "/opt/sbin:"
                      ))
 (setenv "PATH" my-path)
+
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
-(defun package--save-selected-packages (&rest opt) nil)
+(defun package--save-selected-packages (&rest opt)
+  "I forgot what doing this function with OPT arg."
+  nil)
 (setq gc-cons-threshold 100000000)
 (setq inhibit-startup-message t)
 
 (defalias 'yes-or-no-p 'y-or-n-p)
-
 
 ;; this variables must be set before load helm-gtags
 ;; you can change to any prefix key of your choice
@@ -42,10 +45,70 @@
 (setq helm-gtags-prefix-key "\C-cg")
 
 (add-to-list 'load-path "~/.emacs.d/custom")
-(require 'setup-package)                ; setup package manager and install package
+(require 'setup-use-package)
+
+(use-package anzu
+  :ensure t)
+
+;; which-key completion for forgoten keybind
+(use-package which-key
+  :ensure t
+  :config
+  (which-key-mode))
+
+;; try - package that just try other package without install it
+(use-package try
+  :ensure t)
+
+(use-package helm
+  :ensure t
+  :bind
+  (
+   ("M-x" . helm-M-x)
+   ("M-y" . helm-show-kill-ring)
+   ("C-x b" . helm-mini)
+   ("C-x C-f" . helm-find-files)
+   ("C-h SPC" . helm-all-mark-rings))
+  :config
+  (progn
+    (require 'helm-config)
+    (require 'helm-grep)
+    (global-set-key (kbd "C-c h") 'helm-command-prefix)
+    (global-unset-key (kbd "C-x c"))
+    ;; rebihnd tab to do persistent action
+    (define-key helm-map (kbd "<tab>")
+      'helm-execute-persistent-action)
+    ;; make TAB works in terminal
+    (define-key helm-map (kbd "C-i")
+      'helm-execute-persistent-action)
+    ;; list actions using C-z
+    (define-key helm-map (kbd "C-z")
+      'helm-select-action)
+
+    (define-key helm-grep-mode-map (kbd "<return>")
+      'helm-grep-mode-jump-other-window)
+    (define-key helm-grep-mode-map (kbd "n")
+      'helm-grep-mode-jump-other-window-forward)
+    (define-key helm-grep-mode-map (kbd "p")
+      'helm-grep-mode-jump-other-window-backward)
+
+    (when (executable-find "curl")
+      (setq helm-google-suggest-use-curl-p t))
+    (setq
+     helm-scroll-amount 4
+     helm-ff-search-library-in-sexp t
+     helm-split-window-in-side-p t
+     helm-candidate-number-limit 20
+     helm-ff-file-name-history-use-recentf t
+     helm-move-to-line-cycle-in-source t
+     helm-buffers-fuzzy-matching t)
+    ))
+
+
+;; (require 'setup-package)                ; setup package manager and install package
 ;; (require 'setup-linum)                  ; setup mod : linum+
-(require 'setup-helm)                   ; setup 'helm' mod
-(require 'setup-helm-gtags)             ; setup gtags
+;; (require 'setup-helm)                   ; setup 'helm' mod
+;; (require 'setup-helm-gtags)             ; setup gtags
 ;; (require 'setup-ggtags)
 (require 'setup-cedet)
 (require 'setup-editing)
