@@ -102,6 +102,8 @@
      helm-ff-file-name-history-use-recentf t
      helm-move-to-line-cycle-in-source t
      helm-buffers-fuzzy-matching t)
+    (add-to-list 'helm-sources-using-default-as-input 'helm-source-man-pages)
+
     ))
 
 
