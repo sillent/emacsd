@@ -1,16 +1,70 @@
 ;;; setup-helm.el --- Setup helm
 ;;; Commentary:
 ;;; Code:
-(require 'helm-config)
-(require 'helm-grep)
+(use-package helm-config
+  :config
+  (progn
+    (helm-mode 1)
+    ))
+
+(use-package helm
+  :ensure t
+  :init
+  (progn
+    (defvar helm-ff-search-library-in-sexp)
+    (defvar helm-split-window-inside-p)
+    (defvar helm-buffers-fuzzy-matching)
+    (defvar helm-ff-file-name-history-use-recentf)
+    (setq
+     helm-scroll-amount 4
+     helm-ff-search-library-in-sexp t     ; search for library in 'require'
+     helm-split-window-inside-p t
+     helm-candidate-number-limit 20
+     helm-ff-file-name-history-use-recentf t
+     helm-move-to-line-cycle-in-source t
+     helm-buffers-fuzzy-matching t
+     helm-display-header-line nil))
+  :bind
+  (
+   ("M-x" . helm-M-x)
+   ("M-y" . helm-show-kill-ring)
+   ("C-x b" . helm-mini)
+   ("C-x C-f" . helm-find-files)
+   ("C-h SPC" . helm-all-mark-rings))
+  :config
+  (progn
+    (require 'helm-config)
+    (require 'helm-grep)
+    (global-set-key (kbd "C-c h") 'helm-command-prefix)
+    (global-unset-key (kbd "C-x c"))
+        ;; rebihnd tab to do persistent action
+    (define-key helm-map (kbd "<tab>")
+      'helm-execute-persistent-action)
+    ;; make TAB works in terminal
+    ;; (define-key helm-map (kbd "C-i")
+      ;; 'helm-execute-persistent-action)
+    ;; list actions using C-z
+    ;; (define-key helm-map (kbd "C-z")
+    ;;   'helm-select-action)
+
+    (define-key helm-grep-mode-map (kbd "<return>")
+      'helm-grep-mode-jump-other-window)
+    (define-key helm-grep-mode-map (kbd "n")
+      'helm-grep-mode-jump-other-window-forward)
+    (define-key helm-grep-mode-map (kbd "p")
+      'helm-grep-mode-jump-other-window-backward)
+
+    (when (executable-find "curl")
+      (setq helm-google-suggest-use-curl-p t))
+    (add-to-list 'helm-sources-using-default-as-input 'helm-source-man-pages)
+
+    ))
+
+
 
 ;; The default "C-x c" is quite close to "C-x C-c", which quits Emacs.
 ;; Changed to "C-c h". Note: We must set "C-c h" globally, because we
 ;; cannot change `helm-command-prefix-key' once `helm-config' is loaded.
-(global-set-key (kbd "C-c h") 'helm-command-prefix)
-(global-unset-key (kbd "C-x c"))
-
-(define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action) ; rebihnd tab to do persistent action
 (define-key helm-map (kbd "C-i") 'helm-execute-persistent-action) ; make TAB works in terminal
 (define-key helm-map (kbd "C-z")  'helm-select-action) ; list actions using C-z
 
@@ -35,21 +89,21 @@
 
 (add-to-list 'helm-sources-using-default-as-input 'helm-source-man-pages)
 
-(global-set-key (kbd "M-x") 'helm-M-x)
-(global-set-key (kbd "M-y") 'helm-show-kill-ring)
-(global-set-key (kbd "C-x b") 'helm-mini)
-(global-set-key (kbd "C-x C-f") 'helm-find-files)
-(global-set-key (kbd "C-h SPC") 'helm-all-mark-rings)
-(global-set-key (kbd "C-c h o") 'helm-occur)
+;; (global-set-key (kbd "M-x") 'helm-M-x)
+;; (global-set-key (kbd "M-y") 'helm-show-kill-ring)
+;; (global-set-key (kbd "C-x b") 'helm-mini)
+;; (global-set-key (kbd "C-x C-f") 'helm-find-files)
+;; (global-set-key (kbd "C-h SPC") 'helm-all-mark-rings)
+;; (global-set-key (kbd "C-c h o") 'helm-occur)
 
-(global-set-key (kbd "C-c h C-c w") 'helm-wikipedia-suggest)
+;; (global-set-key (kbd "C-c h C-c w") 'helm-wikipedia-suggest)
 
-(global-set-key (kbd "C-c h x") 'helm-register)
+;; (global-set-key (kbd "C-c h x") 'helm-register)
 ;; (global-set-key (kbd "C-x r j") 'jump-to-register)
 
-(define-key 'help-command (kbd "C-f") 'helm-apropos)
-(define-key 'help-command (kbd "r") 'helm-info-emacs)
-(define-key 'help-command (kbd "C-l") 'helm-locate-library)
+;; (define-key 'help-command (kbd "C-f") 'helm-apropos)
+;; (define-key 'help-command (kbd "r") 'helm-info-emacs)
+;; (define-key 'help-command (kbd "C-l") 'helm-locate-library)
 
 ;; use helm to list eshell history
 (add-hook 'eshell-mode-hook

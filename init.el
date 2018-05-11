@@ -60,6 +60,8 @@
 (use-package try
   :ensure t)
 
+(require 'setup-helm)
+
 (use-package helm
   :ensure t
   :bind
