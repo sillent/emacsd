@@ -108,7 +108,7 @@
 
     ))
 
-
+(require 'use-rust)
 ;; (require 'setup-package)                ; setup package manager and install package
 ;; (require 'setup-linum)                  ; setup mod : linum+
 ;; (require 'setup-helm)                   ; setup 'helm' mod
