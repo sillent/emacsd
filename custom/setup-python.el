@@ -3,10 +3,13 @@
 ;;; Code:
 
 ;; elpy
-(elpy-enable)
-(setq python-indent-offset 4)
-(setq elpy-rpc-timeout 3)
-(setq elpy-rpc-backend "jedi")
+(use-package elpy
+  :ensure t
+  :config
+  (elpy-enable)
+  (setq python-indent-offset 4)
+  (setq elpy-rpc-timeout 3)
+  (setq elpy-rpc-backend "jedi"))
 
 ;; (add-hook 'python-mode-hook 'importmagic-mode)
 ;; (require 'py-autopep8)
