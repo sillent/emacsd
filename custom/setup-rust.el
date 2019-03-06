@@ -25,13 +25,14 @@
   :config
   (use-package company-racer)
   (use-package flycheck-rust)
+  (use-package company-lsp)
   (use-package racer
     :ensure t
     :defer t
     :init
-    (setq racer-rust-src-path (concat (getenv "HOME")
-                                      "/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src"))
-    (setq racer-cmd (concat (getenv "HOME") "/.cargo/bin/racer"))
+    ;; (setq racer-rust-src-path (concat (getenv "HOME")
+                                      ;; "/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src"))
+    ;; (setq racer-cmd (concat (getenv "HOME") "/.cargo/bin/racer"))
     :config
     (define-key rust-mode-map (kbd "M-\"") #'racer-find-definition)
     (add-hook 'racer-mode-hook #'eldoc-mode)
