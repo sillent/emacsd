@@ -4,6 +4,10 @@
 ;;; Author: Dmitry Ulyanov
 ;;; Email: siilent1987@yahoo.com
 ;;; Code:
+
+(eval-when-compile
+  (require 'cl))
+
 (use-package flycheck-rust
   :ensure t
   :defer t
@@ -15,9 +19,49 @@
   :defer t
   )
 
+(when (< (car (pkg-info-package-version 'lsp-mode)) 20190105)
+  (use-package lsp-rust
+    :ensure t
+    :after lsp-mode
+    ))
+(defun du/rust-toggle-mutability ()
+  "Toggle the mutability of the variable at point."
+  (interactive)
+  (save-excursion
+    (racer-find-definition)
+    (back-to-indentation)
+    (forward-char 4)
+    (if (lookin-at "mut ")
+        (delete-char 4)
+      (insert "mut "))))
+
+(defun du/rust-toggle-visibility ()
+  "Toggle the visibilit of the variable at point."
+  (interactive)
+  (save-excursion
+    (end-of-line)
+    (beginning-of-defun)
+    (if (looking-at "pub ")
+        (delete-char 4)
+      (insert "pub "))))
+
 (use-package rust-mode
   :ensure t
   :defer t
+  :hook ((rust-mode . (lambda ()
+                        (when (<(car(pkg-info-package-version 'lsp-mode)) 20190105)
+                          (lsp-rust-set-goto-def-racer-fallback t)
+                          (lsp-ui-doc-enable-eldoc))
+                        (lsp-rust-enable)
+                        (flycheck-rust-setup)
+                        (flycheck-mode)
+                        (lsp-ui-mode)
+                        (company-mode))))
+  :bind (:map rust-mode-map
+              ("C-c C-r C-v" . du/rust-toggle-visibility)
+              ("C-c C-r C-m" . du/rust-toggle-mutability)
+              ("C-c C-r C-s" . du/rust-vec-as-slice)
+              ([?\t] . #'company-indent-or-complete-common))
   :init
   (require 'rust-mode)
   (global-company-mode)
@@ -25,7 +69,6 @@
   :config
   (use-package company-racer)
   (use-package flycheck-rust)
-  (use-package company-lsp)
   (use-package racer
     :ensure t
     :defer t

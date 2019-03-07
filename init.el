@@ -108,6 +108,7 @@
 
     ))
 
+(require 'setup-lsp)
 (require 'setup-rust)
 ;; (require 'setup-package)                ; setup package manager and install package
 ;; (require 'setup-linum)                  ; setup mod : linum+
