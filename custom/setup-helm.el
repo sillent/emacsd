@@ -109,6 +109,13 @@
 ;; PACKAGE: helm-swoop                ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Locate the helm-swoop folder to your path
+(use-package helm-swoop
+  :ensure t
+  :config
+  (global-set-key (kbd "M-i") 'helm-swoop)
+  (global-set-key (kbd "M-I") 'helm-swoop-back-to-last-point)
+  (define-key isearch-mode-map (kbd "M-i") 'helm-swoop-from-isearch))
+
 (require 'helm-swoop)
 
 ;; Change the keybinds to whatever you like :)
