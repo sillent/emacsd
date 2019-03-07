@@ -62,34 +62,15 @@
               ("C-c C-r C-m" . du/rust-toggle-mutability)
               ("C-c C-r C-s" . du/rust-vec-as-slice)
               ([?\t] . #'company-indent-or-complete-common))
-  :init
-  (require 'rust-mode)
-  (global-company-mode)
-  (add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-mode))
+  :ensure-system-package
+  ((rustfmt . "rustup component add rustfmt-preview")
+   (racer . "cargo install racer")
+   (rls . "rustup component add rls-preview rust-analysis rust-src"))
   :config
-  (use-package company-racer)
-  (use-package flycheck-rust)
-  (use-package racer
-    :ensure t
-    :defer t
-    :init
-    ;; (setq racer-rust-src-path (concat (getenv "HOME")
-                                      ;; "/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src"))
-    ;; (setq racer-cmd (concat (getenv "HOME") "/.cargo/bin/racer"))
-    :config
-    (define-key rust-mode-map (kbd "M-\"") #'racer-find-definition)
-    (add-hook 'racer-mode-hook #'eldoc-mode)
-    (add-hook 'racer-mode-hook #'company-mode)
-    (local-set-key (kbd "TAB") #'company-indent-or-complete-common)
-    (setq company-tooltip-align-annotations t)
-    )
-  (defun my-rust-mode-hook()
-    (set (make-local-variable 'compile-command "~/.cargo/bin/cargo run"))
-    (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
-    )
-  (add-hook 'rust-mode-hook 'my-rust-mode-hook)
-  (add-hook 'rust-mode-hook #'racer-mode)
-  )
+  (setq rust-indent-method-chain t)
+  (setq company-tooltip-align-annotations t))
+
+
 (provide 'setup-rust)
 
 ;;; setup-rust.el ends here

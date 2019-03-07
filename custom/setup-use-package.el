@@ -18,6 +18,10 @@
 
 (eval-when-compile
   (require 'use-package))
+
+(use-package use-package-ensure-system-package
+  :ensure t)
+
 (provide 'setup-use-package)
 
 ;;; setup-use-package ends here
