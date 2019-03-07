@@ -42,45 +42,78 @@
 
 ;; Package: volatile-highlights
 ;; GROUP: Editing -> Volatile Highlights
-(require 'volatile-highlights)
-(volatile-highlights-mode t)
+(use-package volatile-highlights
+  :ensure t
+  :config
+  (progn
+    (require 'volatile-highlights)
+    (volatile-highlights-mode t)))
+;; (require 'volatile-highlights)
+;; (volatile-highlights-mode t)
 
 ;; Package: clean-aindent-mode
 ;; GROUP: Editing -> Indent -> Clean Aindent
-(require 'clean-aindent-mode)
-(add-hook 'prog-mode-hook 'clean-aindent-mode)
+(use-package clean-aindent-mode
+  :ensure t
+  :config
+  (progn
+    (require 'clean-aindent-mode)
+    (add-hook 'prog-mode-hook 'clean-aindent-mode)))
+
+;;(require 'clean-aindent-mode)
+;;(add-hook 'prog-mode-hook 'clean-aindent-mode)
 
 
 ;; PACKAGE: dtrt-indent
-(require 'dtrt-indent)
-(dtrt-indent-mode 1)
-(setq dtrt-indent-verbosity 0)
+(use-package dtrt-indent
+  :ensure t
+  :config
+  (progn
+    (require 'dtrt-indent)
+    (dtrt-indent-mode 1)
+    (setq dtrt-indent-verbosity 0)))
 
 ;; PACKAGE: ws-butler
-(require 'ws-butler)
-(add-hook 'c-mode-common-hook 'ws-butler-mode)
-(add-hook 'text-mode 'ws-butler-mode)
-(add-hook 'fundamental-mode 'ws-butler-mode)
+(use-package ws-butler
+  :ensure t
+  :config
+  (progn
+    (require 'ws-butler)
+    (add-hook 'c-mode-common-hook 'ws-butler-mode)
+    (add-hook 'text-mode 'ws-butler-mode)
+    (add-hook 'fundamental-mode 'ws-butler-mode)))
 
 ;; Package: undo-tree
 ;; GROUP: Editing -> Undo -> Undo Tree
-(require 'undo-tree)
-(global-undo-tree-mode)
+(use-package undo-tree
+  :ensure t
+  :config
+  (progn
+    (require 'undo-tree)
+    (global-undo-tree-mode)))
 
 ;; Package: yasnippet
 ;; GROUP: Editing -> Yasnippet
-(require 'yasnippet)
-(yas-global-mode 1)
+(use-package yasnippet
+  :ensure t
+  :config
+  (progn
+    (require 'yasnippet)
+    (yas-global-mode 1)))
 
 ;; PACKAGE: smartparens
-(require 'smartparens-config)
-(setq sp-base-key-bindings 'paredit)
-(setq sp-autoskip-closing-pair 'always)
-(setq sp-hybrid-kill-entire-symbol nil)
-(sp-use-paredit-bindings)
+(use-package smartparens
+  :ensure t
+  :config
+  (progn
+    (require 'smartparens-config)
+    (setq sp-base-key-bindings 'paredit)
+    (setq sp-autoskip-closing-pair 'always)
+    (setq sp-hybrid-kill-entire-symbol nil)
+    (sp-use-paredit-bindings)
 
-(show-smartparens-global-mode +1)
-(smartparens-global-mode 1)
+    (show-smartparens-global-mode +1)
+    (smartparens-global-mode 1)))
 
 ;; PACKAGE: comment-dwim-2
 (global-set-key (kbd "M-;") 'comment-dwim-2)
@@ -123,22 +156,37 @@
 
 ;; PACKAGE: anzu
 ;; GROUP: Editing -> Matching -> Isearch -> Anzu
-(require 'anzu)
-(global-anzu-mode)
-(global-set-key (kbd "M-%") 'anzu-query-replace)
-(global-set-key (kbd "C-M-%") 'anzu-query-replace-regexp)
+(use-package anzu
+  :ensure t
+  :config
+  (progn
+    (require 'anzu)
+    (global-anzu-mode)
+    (global-set-key (kbd "M-%") 'anzu-query-replace)
+    (global-set-key (kbd "C-M-%") 'anzu-query-replace-regexp)))
 
 ;; PACKAGE: iedit
 (setq iedit-toggle-key-default nil)
-(require 'iedit)
-(global-set-key (kbd "C-;") 'iedit-mode)
+(use-package iedit
+  :ensure t
+  :config
+  (progn
+    (require 'iedit)
+    (global-set-key (kbd "C-;") 'iedit-mode)))
 
 ;; PACKAGE: beacon (colorized MARK position)
-(beacon-mode t)
+(use-package beacon
+  :ensure t
+  :config
+  (beacon-mode t))
 
 ;; PACKAGE: duplicate-thing
-(require 'duplicate-thing)
-(global-set-key (kbd "M-c") 'duplicate-thing)
+(use-package duplicate-thing
+  :ensure t
+  :config
+  (progn
+    (require 'duplicate-thing)
+    (global-set-key (kbd "M-c") 'duplicate-thing)))
 
 ;; Customized functions
 (defun prelude-move-beginning-of-line (arg)

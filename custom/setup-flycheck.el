@@ -3,9 +3,13 @@
 ;;; Commentary:
 ;;; test
 ;;; Code:
-(require 'flycheck)
+(use-package flycheck
+  :ensure t
+  :config
+  (progn
+    (require 'flycheck)
 ;;; Code:
-(global-flycheck-mode t)
-(setq flycheck-clang-include-path '("./" "./include" "../include"))
+    (global-flycheck-mode t)
+    (setq flycheck-clang-include-path '("./" "./include" "../include"))))
 (provide 'setup-flycheck)
 ;;; setup-flycheck.el ends here

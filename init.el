@@ -118,9 +118,12 @@
 (require 'setup-editing)
 (require 'setup-icons)
 (require 'setup-neotree)
-(require 'setup-helm-swoop)
+;;(require 'setup-helm-swoop)		
 
-(require 'autopair)
+(use-package autopair
+  :ensure t
+  :config
+  (require 'autopair))
 (require 'setup-org)
 (require 'custom-font)
 (require 'setup-modeline)
@@ -216,14 +219,22 @@
 (smartparens-global-mode 1)
 
 ;; Package: projejctile
-(require 'projectile)
-(projectile-global-mode)
-(setq projectile-enable-caching t)
+(use-package projectile
+  :ensure t
+  :config
+  (progn
+    (require 'projectile)
+    (projectile-global-mode)
+    (setq projectile-enable-caching t)))
 
-(require 'helm-projectile)
-(helm-projectile-on)
-(setq projectile-completion-system 'helm)
-(setq projectile-indexing-method 'alien)
+(use-package helm-projectile
+  :ensure t
+  :config
+  (progn
+    (require 'helm-projectile)
+    (helm-projectile-on)
+    (setq projectile-completion-system 'helm)
+    (setq projectile-indexing-method 'alien)))
 
 ;; (require 'setup-rpm-spec)
 

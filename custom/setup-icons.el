@@ -2,6 +2,9 @@
 ;;; Commentary:
 ;;;
 ;;; Code:
-(require 'all-the-icons)
+(use-package all-the-icons
+  :ensure t
+  :config
+  (require 'all-the-icons))
 (provide 'setup-icons)
 ;;; setup-icons.el ends here
