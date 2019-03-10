@@ -1,7 +1,8 @@
+;;; setup-lsp -- Summary
+;;; Commentary:
+;;;
+;;; Code:
 (remove-hook 'flymake-diagnostic-functions 'flymake-proc-legacy-flymake)
-(defvar du/title)
-(defvar du/msg)
-(defvar du/done)
 
 (use-package lsp-mode
   :ensure t
@@ -24,12 +25,15 @@
 PARAMS progress report notification data."
       ;; Minimal implementation - we could show the progress as well.
       ;; (setq id (gethash "id" params))
+      (defvar du/title)
+      (defvar du/msg)
+      (defvar du/done)
       (setq du/title (gethash "title" params))
       (setq du/msg (gethash "message" params))
       (setq du/done (gethash "done" params))
       (message "RLS: %s%s%s"
                du/title
-               (if du/msg (format " \"%s\"" msg) "")
+               (if du/msg (format " \"%s\"" du/msg) "")
                (if du/done " done" "")))
 
     (defun lsp-rust-enable ()
