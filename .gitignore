@@ -12,3 +12,4 @@ games/
 url/
 *.dat
 .python-environments/
+transient/
