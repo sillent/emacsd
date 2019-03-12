@@ -116,6 +116,10 @@
     (show-smartparens-global-mode +1)
     (smartparens-global-mode 1)))
 
+;; PACKAGE: yaml-mode
+(use-package yaml-mode
+  :ensure t)
+
 ;; PACKAGE: comment-dwim-2
 (global-set-key (kbd "M-;") 'comment-dwim-2)
 
