@@ -13,3 +13,4 @@ url/
 *.dat
 .python-environments/
 .lsp-sessi*
+transient/

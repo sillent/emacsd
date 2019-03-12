@@ -111,15 +111,15 @@
 (require 'setup-lsp)
 (require 'setup-rust)
 ;; (require 'setup-package)                ; setup package manager and install package
-;; (require 'setup-linum)                  ; setup mod : linum+
 ;; (require 'setup-helm)                   ; setup 'helm' mod
 ;; (require 'setup-helm-gtags)             ; setup gtags
 ;; (require 'setup-ggtags)
+(require 'setup-ggtags)
 (require 'setup-cedet)
 (require 'setup-editing)
 (require 'setup-icons)
 (require 'setup-neotree)
-;;(require 'setup-helm-swoop)		
+;;(require 'setup-helm-swoop)
 
 (use-package autopair
   :ensure t
@@ -129,7 +129,7 @@
 (require 'custom-font)
 (require 'setup-modeline)
 (require 'setup-flycheck)
-(require 'cmake)
+(require 'setup-cmake)
 (require 'myfuncs)
 ;; setup python
 (require 'setup-python)
@@ -203,21 +203,6 @@
 ;; Package: ws-butler
 (require 'ws-butler)
 (add-hook 'prog-mode-hook 'ws-butler-mode)
-
-;; Package: yasnippet
-(require 'yasnippet)
-(yas-global-mode 1)
-(setq yas-verbosity 0)
-
-;; Package: smartparens
-(require 'smartparens-config)
-(setq sp-base-key-bindings 'paredit)
-(setq sp-autoskip-closing-pair 'always)
-(setq sp-hybrid-kill-entire-symbol nil)
-(sp-use-paredit-bindings)
-
-(show-smartparens-global-mode +1)
-(smartparens-global-mode 1)
 
 ;; Package: projejctile
 (use-package projectile
