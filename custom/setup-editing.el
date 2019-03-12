@@ -99,7 +99,8 @@
   :config
   (progn
     (require 'yasnippet)
-    (yas-global-mode 1)))
+    (yas-global-mode 1)
+    (setq yas-verbosity 0)))
 
 ;; PACKAGE: smartparens
 (use-package smartparens
@@ -347,6 +348,11 @@ Position the cursor at it's beginning, according to the current mode."
 
 (global-set-key (kbd "M-o") 'prelude-smart-open-line)
 (global-set-key (kbd "M-o") 'open-line)
+
+(use-package powerline
+  :ensure t
+  :config
+  (require 'powerline))
 
 (provide 'setup-editing)
 ;;; setup-editing.el ends here

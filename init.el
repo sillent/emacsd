@@ -111,15 +111,15 @@
 (require 'setup-lsp)
 (require 'setup-rust)
 ;; (require 'setup-package)                ; setup package manager and install package
-;; (require 'setup-linum)                  ; setup mod : linum+
 ;; (require 'setup-helm)                   ; setup 'helm' mod
 ;; (require 'setup-helm-gtags)             ; setup gtags
 ;; (require 'setup-ggtags)
+(require 'setup-ggtags)
 (require 'setup-cedet)
 (require 'setup-editing)
 (require 'setup-icons)
 (require 'setup-neotree)
-;;(require 'setup-helm-swoop)		
+;;(require 'setup-helm-swoop)
 
 (use-package autopair
   :ensure t
@@ -129,7 +129,7 @@
 (require 'custom-font)
 (require 'setup-modeline)
 (require 'setup-flycheck)
-(require 'cmake)
+(require 'setup-cmake)
 (require 'myfuncs)
 ;; setup python
 (require 'setup-python)

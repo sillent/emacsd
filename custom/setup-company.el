@@ -2,6 +2,17 @@
 ;;; Commentary:
 ;;; company
 ;;; Code:
+(use-package company
+  :ensure t)
+(use-package company-shell
+  :ensure t)
+(use-package company-c-headers
+  :ensure t)
+(use-package company-jedi
+  :ensure t)
+(use-package company-shell
+  :ensure t)
+
 (setq company-c-headers-path-system '("/usr/include" "/usr/local/include"))
 (setq company-c-headers-path-user '("." "./include" "../include"))
 (setq company-clang-arguments '("-I." "-I./include" "-I../include"))
