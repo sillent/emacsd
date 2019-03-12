@@ -204,21 +204,6 @@
 (require 'ws-butler)
 (add-hook 'prog-mode-hook 'ws-butler-mode)
 
-;; Package: yasnippet
-(require 'yasnippet)
-(yas-global-mode 1)
-(setq yas-verbosity 0)
-
-;; Package: smartparens
-(require 'smartparens-config)
-(setq sp-base-key-bindings 'paredit)
-(setq sp-autoskip-closing-pair 'always)
-(setq sp-hybrid-kill-entire-symbol nil)
-(sp-use-paredit-bindings)
-
-(show-smartparens-global-mode +1)
-(smartparens-global-mode 1)
-
 ;; Package: projejctile
 (use-package projectile
   :ensure t
