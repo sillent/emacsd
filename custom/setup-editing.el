@@ -40,6 +40,12 @@
                                           newline-mark))
                             (whitespace-mode 1)))
 
+;; Package zygospore
+(use-package zygospore
+  :ensure t
+  :config
+  (progn
+    (global-set-key (kbd "C-x 1") 'zygospore-toggle-delete-other-windows)))
 ;; Package: volatile-highlights
 ;; GROUP: Editing -> Volatile Highlights
 (use-package volatile-highlights

@@ -224,10 +224,6 @@
 
 ;; (require 'setup-rpm-spec)
 
-;; Package zygospore
-(global-set-key (kbd "C-x 1") 'zygospore-toggle-delete-other-windows)
-
-
 ;; (show-paren-mode t)
 ;; (setq show-paren-style 'expression)
 ;; (electric-pair-mode t);; { } pair mode
