@@ -61,53 +61,7 @@
   :ensure t)
 
 (require 'setup-helm)
-
-(use-package helm
-  :ensure t
-  :bind
-  (
-   ("M-x" . helm-M-x)
-   ("M-y" . helm-show-kill-ring)
-   ("C-x b" . helm-mini)
-   ("C-x C-f" . helm-find-files)
-   ("C-h SPC" . helm-all-mark-rings))
-  :config
-  (progn
-    (require 'helm-config)
-    (require 'helm-grep)
-    (global-set-key (kbd "C-c h") 'helm-command-prefix)
-    (global-unset-key (kbd "C-x c"))
-    ;; rebihnd tab to do persistent action
-    (define-key helm-map (kbd "<tab>")
-      'helm-execute-persistent-action)
-    ;; make TAB works in terminal
-    (define-key helm-map (kbd "C-i")
-      'helm-execute-persistent-action)
-    ;; list actions using C-z
-    (define-key helm-map (kbd "C-z")
-      'helm-select-action)
-
-    (define-key helm-grep-mode-map (kbd "<return>")
-      'helm-grep-mode-jump-other-window)
-    (define-key helm-grep-mode-map (kbd "n")
-      'helm-grep-mode-jump-other-window-forward)
-    (define-key helm-grep-mode-map (kbd "p")
-      'helm-grep-mode-jump-other-window-backward)
-
-    (when (executable-find "curl")
-      (setq helm-google-suggest-use-curl-p t))
-    (setq
-     helm-scroll-amount 4
-     helm-ff-search-library-in-sexp t
-     helm-split-window-in-side-p t
-     helm-candidate-number-limit 20
-     helm-ff-file-name-history-use-recentf t
-     helm-move-to-line-cycle-in-source t
-     helm-buffers-fuzzy-matching t)
-    (add-to-list 'helm-sources-using-default-as-input 'helm-source-man-pages)
-
-    ))
-
+(require 'setup-helm-gtags)
 (require 'setup-lsp)
 (require 'setup-rust)
 ;; (require 'setup-package)                ; setup package manager and install package

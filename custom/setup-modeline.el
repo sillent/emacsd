@@ -5,8 +5,10 @@
   :ensure t
   :config
   (progn
-    (setq sml/theme 'dark)
-    (sml/setup)))
+    (if (display-graphic-p)
+        (progn
+          (setq sml/theme 'dark)
+          (sml/setup)))))
 (use-package smart-mode-line-powerline-theme
   :ensure t)
 (provide 'setup-modeline)

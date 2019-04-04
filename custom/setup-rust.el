@@ -14,6 +14,9 @@
   :config
   (add-hook  'flycheck-mode-hook #'flycheck-rust-setup))
 
+(use-package racer
+  :ensure t)
+
 (use-package company-racer
   :ensure t
   :defer t

@@ -362,7 +362,10 @@ Position the cursor at it's beginning, according to the current mode."
 (use-package powerline
   :ensure t
   :config
-  (require 'powerline))
+  (progn
+    (if (display-graphic-p)
+        (require 'powerline))
+    ))
 
 (provide 'setup-editing)
 ;;; setup-editing.el ends here
