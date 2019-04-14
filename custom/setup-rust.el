@@ -27,6 +27,7 @@
     :ensure t
     :after lsp-mode
     ))
+
 (defun du/rust-toggle-mutability ()
   "Toggle the mutability of the variable at point."
   (interactive)
@@ -52,9 +53,9 @@
   :ensure t
   :defer t
   :hook ((rust-mode . (lambda ()
-                        (when (<(car(pkg-info-package-version 'lsp-mode)) 20190105)
-                          (lsp-rust-set-goto-def-racer-fallback t)
-                          (lsp-ui-doc-enable-eldoc))
+                        ;;(when (<(car(pkg-info-package-version 'lsp-mode)) 20190105)
+                        ;;  (lsp-rust-set-goto-def-racer-fallback t)
+                        ;;  (lsp-ui-doc-enable-eldoc))
                         (lsp-rust-enable)
                         (flycheck-rust-setup)
                         (flycheck-mode)
