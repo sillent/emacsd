@@ -48,7 +48,9 @@
 (require 'setup-use-package)
 
 (use-package anzu
-  :ensure t)
+  :ensure t
+  :config
+  (global-anzu-mode +1))
 
 ;; which-key completion for forgoten keybind
 (use-package which-key
