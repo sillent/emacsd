@@ -8,12 +8,6 @@
 (eval-when-compile
   (require 'cl))
 
-(use-package flycheck-rust
-  :ensure t
-  :defer t
-  :config
-  (add-hook  'flycheck-mode-hook #'flycheck-rust-setup))
-
 (use-package racer
   :ensure t)
 
@@ -53,9 +47,9 @@
   :ensure t
   :defer t
   :hook ((rust-mode . (lambda ()
-                        ;;(when (<(car(pkg-info-package-version 'lsp-mode)) 20190105)
-                        ;;  (lsp-rust-set-goto-def-racer-fallback t)
-                        ;;  (lsp-ui-doc-enable-eldoc))
+                        (when (<(car(pkg-info-package-version 'lsp-mode)) 20190105)
+                          (lsp-rust-set-goto-def-racer-fallback t)
+                          (lsp-ui-doc-enable-eldoc))
                         (lsp-rust-enable)
                         (flycheck-rust-setup)
                         (flycheck-mode)
@@ -74,6 +68,12 @@
   (setq rust-indent-method-chain t)
   (setq company-tooltip-align-annotations t))
 
+
+(use-package flycheck-rust
+  :ensure t
+  :defer t
+  :config
+  (add-hook  'flycheck-mode-hook #'flycheck-rust-setup))
 
 (provide 'setup-rust)
 

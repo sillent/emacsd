@@ -8,7 +8,6 @@
   :config
   (progn
     (require 'flycheck)
-;;; Code:
     (global-flycheck-mode t)
     (setq flycheck-clang-include-path '("./" "./include" "../include"))))
 (provide 'setup-flycheck)
