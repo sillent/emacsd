@@ -26,6 +26,7 @@
                      "/usr/local/sbin:"
                      "/opt/bin:"
                      "/opt/sbin:"
+                     "~/.cargo/bin/:"
                      ))
 (setenv "PATH" my-path)
 

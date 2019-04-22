@@ -127,7 +127,10 @@
   :ensure t)
 
 ;; PACKAGE: comment-dwim-2
-(global-set-key (kbd "M-;") 'comment-dwim-2)
+(use-package comment-dwim-2
+  :ensure t
+  :config
+  (global-set-key (kbd "M-;") 'comment-dwim-2))
 
 ;; Jump to end of snippet definition
 (define-key yas-keymap (kbd "<return>") 'yas/exit-all-snippets)
