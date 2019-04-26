@@ -48,6 +48,10 @@
 (add-to-list 'load-path "~/.emacs.d/custom")
 (require 'setup-use-package)
 
+(use-package pkg-info
+  :ensure t
+  )
+
 (use-package anzu
   :ensure t
   :config
