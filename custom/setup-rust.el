@@ -16,6 +16,15 @@
   :defer t
   )
 
+(use-package cargo
+  :ensure t
+  :defer t
+  :bind (
+        ("C-c C-c C-e" . cargo-process-bench)
+        ("C-c C-c C-b" . cargo-process-build)
+        ("C-c C-c C-r" . cargo-process-run)
+   ))
+
 (when (< (car (pkg-info-package-version 'lsp-mode)) 20190105)
   (use-package lsp-rust
     :ensure t
