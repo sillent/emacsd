@@ -96,6 +96,7 @@
 (require 'setup-python)
 (require 'setup-magit)
 (require 'setup-webmode)
+(require 'setup-projectile)
 
 (windmove-default-keybindings)
 
