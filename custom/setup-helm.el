@@ -23,7 +23,9 @@
      helm-ff-file-name-history-use-recentf t
      helm-move-to-line-cycle-in-source t
      helm-buffers-fuzzy-matching t
-     helm-display-header-line nil)
+     helm-display-header-line nil
+     )
+    (helm-autoresize-mode t)
     ;; hooks
     (add-hook 'eshell-mode-hook
               #'(lambda ()
