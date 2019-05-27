@@ -23,6 +23,7 @@
         ("C-c C-c C-e" . cargo-process-bench)
         ("C-c C-c C-b" . cargo-process-build)
         ("C-c C-c C-r" . cargo-process-run)
+        ("C-c C-c C-t" . cargo-process-test)
    ))
 
 (when (< (car (pkg-info-package-version 'lsp-mode)) 20190105)

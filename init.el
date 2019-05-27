@@ -94,6 +94,7 @@
 (require 'myfuncs)
 ;; setup python
 (require 'setup-python)
+(require 'setup-jinja2)
 (require 'setup-magit)
 (require 'setup-webmode)
 (require 'setup-projectile)
