@@ -71,6 +71,7 @@
 (require 'setup-helm-gtags)
 (require 'setup-lsp)
 (require 'setup-rust)
+(require 'setup-go)
 ;; (require 'setup-package)                ; setup package manager and install package
 ;; (require 'setup-helm)                   ; setup 'helm' mod
 ;; (require 'setup-helm-gtags)             ; setup gtags
