@@ -49,6 +49,9 @@
 (add-to-list 'load-path "~/.emacs.d/custom")
 (require 'setup-use-package)
 
+(use-package gnu-elpa-keyring-update
+  :ensure t)
+
 (use-package pkg-info
   :ensure t
   )
@@ -67,6 +70,7 @@
 ;; try - package that just try other package without install it
 (use-package try
   :ensure t)
+
 
 (require 'setup-helm)
 (require 'setup-helm-gtags)
