@@ -1,11 +1,13 @@
 ;;; setup-helm.el --- Setup helm
 ;;; Commentary:
 ;;; Code:
-(use-package helm-config
-  :config
-  (progn
-    (helm-mode 1)
-    ))
+;;; commented helm-config - removed from repository
+;;;(use-package helm-config
+;;;  :config
+;;;  (progn
+;;;    (helm-mode 1)
+;;;    ))
+
 
 (use-package helm
   :ensure t
@@ -25,7 +27,7 @@
      helm-buffers-fuzzy-matching t
      helm-display-header-line nil
      )
-    (helm-autoresize-mode t)
+    ;; (helm-autoresize-mode t)
     ;; hooks
     (add-hook 'eshell-mode-hook
               #'(lambda ()
@@ -73,15 +75,15 @@
 ;; The default "C-x c" is quite close to "C-x C-c", which quits Emacs.
 ;; Changed to "C-c h". Note: We must set "C-c h" globally, because we
 ;; cannot change `helm-command-prefix-key' once `helm-config' is loaded.
-(define-key helm-map (kbd "C-i") 'helm-execute-persistent-action) ; make TAB works in terminal
-(define-key helm-map (kbd "C-z")  'helm-select-action) ; list actions using C-z
+;; (define-key helm-map (kbd "C-i") 'helm-execute-persistent-action) ; make TAB works in terminal
+;; (define-key helm-map (kbd "C-z")  'helm-select-action) ; list actions using C-z
 
-(define-key helm-grep-mode-map (kbd "<return>")  'helm-grep-mode-jump-other-window)
-(define-key helm-grep-mode-map (kbd "n")  'helm-grep-mode-jump-other-window-forward)
-(define-key helm-grep-mode-map (kbd "p")  'helm-grep-mode-jump-other-window-backward)
+;; (define-key helm-grep-mode-map (kbd "<return>")  'helm-grep-mode-jump-other-window)
+;; (define-key helm-grep-mode-map (kbd "n")  'helm-grep-mode-jump-other-window-forward)
+;; (define-key helm-grep-mode-map (kbd "p")  'helm-grep-mode-jump-other-window-backward)
 
 
-(add-to-list 'helm-sources-using-default-as-input 'helm-source-man-pages)
+;; (add-to-list 'helm-sources-using-default-as-input 'helm-source-man-pages)
 
 
 ;; (global-set-key (kbd "C-c h x") 'helm-register)
