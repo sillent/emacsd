@@ -34,6 +34,8 @@
                   (define-key eshell-mode-map (kbd "M-l")  'helm-eshell-history)))
     (add-hook 'helm-goto-line-before-hook 'helm-save-current-pos-to-mark-ring)
     )
+  (helm-mode 1)
+  (helm-autoresize-mode t)
   :bind
   (
    ("M-x" . helm-M-x)
@@ -51,8 +53,8 @@
     (define-key helm-map (kbd "<tab>")
       'helm-execute-persistent-action)
     ;; make TAB works in terminal
-    ;; (define-key helm-map (kbd "C-i")
-      ;; 'helm-execute-persistent-action)
+    (define-key helm-map (kbd "C-i")
+     'helm-execute-persistent-action)
     ;; list actions using C-z
     ;; (define-key helm-map (kbd "C-z")
     ;;   'helm-select-action)
@@ -144,8 +146,8 @@
 ;; If nil, you can slightly boost invoke speed in exchange for text color
 (setq helm-swoop-speed-or-color t)
 
-(helm-mode 1)
-(helm-autoresize-mode t)
+;; (helm-mode 1)
+;; (helm-autoresize-mode t)
 
 (provide 'setup-helm)
 ;;; setup-helm.el ends here
