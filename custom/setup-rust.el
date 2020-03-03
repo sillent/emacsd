@@ -8,8 +8,8 @@
 (eval-when-compile
   (require 'cl))
 
-(use-package racer
-  :ensure t)
+;; (use-package racer
+;;  :ensure t)
 
 (use-package company-racer
   :ensure t
