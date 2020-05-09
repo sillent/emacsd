@@ -16,20 +16,22 @@
 (setq user-mail-address "sillent1987@gmail.com")
 ;; PATH set
 (defvar my-path)
-(setq my-path (concat "~/bin:"
-                     "~/.local/bin:"
-                     "/bin:"
-                     "/usr/bin:"
-                     "/usr/sbin:"
-                     "/sbin:"
-                     "/usr/local/bin:"
-                     "/usr/local/sbin:"
-                     "/opt/bin:"
-                     "/opt/sbin:"
-                     "~/.cargo/bin:"
-                     "~/.goroot/bin:"
-                     ))
-(setenv "PATH" my-path)
+(if (not (eq system-type 'windows-nt))
+    (progn
+      (setq my-path (concat "~/bin:"
+                      "~/.local/bin:"
+                      "/bin:"
+                      "/usr/bin:"
+                      "/usr/sbin:"
+                      "/sbin:"
+                      "/usr/local/bin:"
+                      "/usr/local/sbin:"
+                      "/opt/bin:"
+                      "/opt/sbin:"
+                      "~/.cargo/bin:"
+                      "~/.goroot/bin:"
+                      ))
+      (setenv "PATH" my-path)))
 
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
