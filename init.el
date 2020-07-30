@@ -10,6 +10,7 @@
 ;; installed packages.  Don't delete this line.  If you don't want it,
 ;; just comment it out by adding a semicolon to the start of the line.
 ;; You may delete these explanatory comments.
+(setq gc-cons-threshold 100000000)
 (package-initialize)
 
 (setq user-full-name "Dmitry Ulyanov")
@@ -38,7 +39,6 @@
 (defun package--save-selected-packages (&rest opt)
   "I forgot what doing this function with OPT arg."
   nil)
-(setq gc-cons-threshold 100000000)
 (setq inhibit-startup-message t)
 
 (defalias 'yes-or-no-p 'y-or-n-p)
