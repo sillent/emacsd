@@ -11,8 +11,8 @@
 ;; just comment it out by adding a semicolon to the start of the line.
 ;; You may delete these explanatory comments.
 (setq gc-cons-threshold 100000000)
-(package-initialize)
-
+;; (package-initialize)
+(when (version< emacs-version "27.0") (package-initialize))
 (setq user-full-name "Dmitry Ulyanov")
 (setq user-mail-address "sillent1987@gmail.com")
 ;; PATH set
