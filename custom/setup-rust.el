@@ -5,8 +5,8 @@
 ;;; Email: siilent1987@yahoo.com
 ;;; Code:
 
-(eval-when-compile
-  (require 'cl))
+;; (eval-when-compile
+;;   (require 'cl))
 
 ;; (use-package racer
 ;;  :ensure t)
