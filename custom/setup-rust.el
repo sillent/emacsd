@@ -53,31 +53,36 @@
         (delete-char 4)
       (insert "pub "))))
 
-(use-package rust-mode
-  :ensure t
-  :defer t
-  :hook ((rust-mode . (lambda ()
-                        (when (<(car(pkg-info-package-version 'lsp-mode)) 20190105)
-                          (lsp-rust-set-goto-def-racer-fallback t)
-                          (lsp-ui-doc-enable-eldoc))
-                        (lsp-rust-enable)
-                        (flycheck-rust-setup)
-                        (flycheck-mode)
-                        (lsp-ui-mode)
-                        (company-mode))))
-  :bind (:map rust-mode-map
-              ("C-c C-r C-v" . du/rust-toggle-visibility)
-              ("C-c C-r C-m" . du/rust-toggle-mutability)
-              ("C-c C-r C-s" . du/rust-vec-as-slice)
-              ([?\t] . #'company-indent-or-complete-common))
-  :ensure-system-package
-  ((rustfmt . "rustup component add rustfmt-preview")
-   (racer . "cargo install racer")
-   (rls . "rustup component add rls-preview rust-analysis rust-src"))
-  :config
-  (setq rust-indent-method-chain t)
-  (setq company-tooltip-align-annotations t))
+;; (use-package rust-mode
+;;   :ensure t
+;;   :defer t
+;;   :hook ((rust-mode . (lambda ()
+;;                         (when (<(car(pkg-info-package-version 'lsp-mode)) 20190105)
+;;                           (lsp-rust-set-goto-def-racer-fallback t)
+;;                           (lsp-ui-doc-enable-eldoc))
+;;                         (lsp-rust-enable)
+;;                         (flycheck-rust-setup)
+;;                         (flycheck-mode)
+;;                         (lsp-ui-mode)
+;;                         (company-mode))))
+;;   :bind (:map rust-mode-map
+;;               ("C-c C-r C-v" . du/rust-toggle-visibility)
+;;               ("C-c C-r C-m" . du/rust-toggle-mutability)
+;;               ("C-c C-r C-s" . du/rust-vec-as-slice)
+;;               ([?\t] . #'company-indent-or-complete-common))
+;;   :ensure-system-package
+;;   ((rustfmt . "rustup component add rustfmt-preview")
+;;    (racer . "cargo install racer")
+;;    (rls . "rustup component add rls-preview rust-analysis rust-src"))
+;;   :config
+;;   (setq rust-indent-method-chain t)
+;;   (setq company-tooltip-align-annotations t))
 
+(use-package rustic
+  :ensure t
+  ;; :config
+  ;; (setq lsp-rust-analyzer-server-command "/Users/dima//Downloads/rust-analazer-mac")
+  )
 
 (use-package flycheck-rust
   :ensure t

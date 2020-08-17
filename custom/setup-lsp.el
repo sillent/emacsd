@@ -7,6 +7,9 @@
 (use-package lsp-mode
   :ensure t
   :config
+  ;; https://emacs-lsp.github.io/lsp-mode/page/performance/
+  (setq read-process-output-max (* 1024 1024)) ;; 1mb
+  (setq lsp-completion-provider :capf)
   (setq lsp-print-io t)
   (setq lsp-rust-rls-command '("rls"))
   ;; (setq lsp-rust-rls-command '("rustup" "run" "nightly" "rls"))
@@ -49,10 +52,10 @@ PARAMS progress report notification data."
 
 ;; company-lsp: Company completion backend for lsp-mode.
 ;; https://github.com/tigersoldier/company-lsp/
-(use-package company-lsp
-  :ensure t
-  :config
-  (push 'company-lsp company-backends))
+;; (use-package company-lsp
+;;   :ensure t
+;;   :config
+;;   (push 'company-lsp company-backends))
 
 ;; lsp-ui: This contains all the higher level UI modules of lsp-mode, like flycheck support and code lenses.
 ;; https://github.com/emacs-lsp/lsp-ui
@@ -71,9 +74,11 @@ PARAMS progress report notification data."
   ;;       lsp-ui-imenu-enable t
   ;;       lsp-ui-sideline-ignore-duplicate t)
   (setq lsp-ui-doc-enable t
-        lsp-enable-completion-at-point t
+        lsp-completion-enable t
+        ;; lsp-enable-completion-at-point t
         lsp-ui-imenu-enable t
-        lsp-ui-sideline-show-flycheck t
+        ;; lsp-ui-sideline-show-flycheck t
+        ;; lsp-ui-sideline-show-flycheck t
         lsp-ui-sideline-ignore-duplicate t
         lsp-ui-sideline-enable t)
   (if lsp-ui-doc-use-webkit ;; window-system
