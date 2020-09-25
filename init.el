@@ -31,6 +31,7 @@
                       "/opt/sbin:"
                       "~/.cargo/bin:"
                       "~/.goroot/bin:"
+                      "/usr/local/go/bin:"
                       ))
       (setenv "PATH" my-path)))
 
