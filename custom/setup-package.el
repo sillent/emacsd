@@ -54,6 +54,7 @@
     all-the-icons
     all-the-icons-dired
     web-mode
+    presentation
     smart-mode-line
     smart-mode-line-powerline-theme))
 

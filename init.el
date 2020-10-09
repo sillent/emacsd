@@ -108,6 +108,7 @@
 (require 'setup-magit)
 (require 'setup-webmode)
 (require 'setup-projectile)
+(require 'setup-presentation)
 
 (windmove-default-keybindings)
 
