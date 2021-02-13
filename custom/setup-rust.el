@@ -11,10 +11,10 @@
 ;; (use-package racer
 ;;  :ensure t)
 
-(use-package company-racer
-  :ensure t
-  :defer t
-  )
+;; (use-package company-racer
+;;   :ensure t
+;;   :defer t
+;;   )
 
 (use-package cargo
   :ensure t
@@ -89,6 +89,7 @@
   :defer t
   :config
   (add-hook  'flycheck-mode-hook #'flycheck-rust-setup))
+
 
 (provide 'setup-rust)
 
