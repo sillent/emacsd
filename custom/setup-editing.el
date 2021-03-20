@@ -168,17 +168,6 @@
 
 (add-hook 'term-mode-hook (lambda() (setq yas-dont-activate t)))
 
-;; PACKAGE: anzu
-;; GROUP: Editing -> Matching -> Isearch -> Anzu
-(use-package anzu
-  :ensure t
-  :config
-  (progn
-    (require 'anzu)
-    (global-anzu-mode)
-    (global-set-key (kbd "M-%") 'anzu-query-replace)
-    (global-set-key (kbd "C-M-%") 'anzu-query-replace-regexp)))
-
 ;; PACKAGE: iedit
 (setq iedit-toggle-key-default nil)
 (use-package iedit
