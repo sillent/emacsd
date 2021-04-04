@@ -3,6 +3,7 @@
 ;;; This is my emacs.d/init.el configuration
 ;;; Author: Dmitry Ulyanov
 ;;; Email: siilent1987@yahoo.com
+;;; 02 april 2021
 ;;; Code:
 
 
@@ -51,8 +52,6 @@
 
 ;; this variables must be set before load helm-gtags
 ;; you can change to any prefix key of your choice
-(defvar helm-gtags-prefix-key)
-(setq helm-gtags-prefix-key "\C-cg")
 
 (add-to-list 'load-path "~/.emacs.d/custom")
 (require 'setup-use-package)
@@ -76,8 +75,8 @@
   (which-key-mode))
 
 ;; try - package that just try other package without install it
-(use-package try
-  :ensure t)
+;; (use-package try
+;;   :ensure t)
 
 
 (require 'setup-helm)

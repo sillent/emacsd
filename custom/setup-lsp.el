@@ -80,7 +80,9 @@ PARAMS progress report notification data."
         ;; lsp-ui-sideline-show-flycheck t
         ;; lsp-ui-sideline-show-flycheck t
         lsp-ui-sideline-ignore-duplicate t
-        lsp-ui-sideline-enable t)
+        lsp-ui-sideline-enable t
+        lsp-ui-doc-delay 2
+        lsp-ui-sideline-delay 2)
   (if lsp-ui-doc-use-webkit ;; window-system
       (setq lsp-ui-doc-position 'at-point
             lsp-ui-doc-header t

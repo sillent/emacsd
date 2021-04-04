@@ -13,11 +13,14 @@
   :ensure t
   :init
   (progn
+    (defvar helm-gtags-prefix-key)
+    (setq helm-gtags-prefix-key "\C-cg")
     (defvar helm-ff-search-library-in-sexp)
     (defvar helm-split-window-inside-p)
     (defvar helm-buffers-fuzzy-matching)
     (defvar helm-ff-file-name-history-use-recentf)
     (setq
+     helm-autoresize-max-height 20
      helm-scroll-amount 4
      helm-ff-search-library-in-sexp t     ; search for library in 'require'
      helm-split-window-inside-p t
@@ -25,7 +28,7 @@
      helm-ff-file-name-history-use-recentf t
      helm-move-to-line-cycle-in-source t
      helm-buffers-fuzzy-matching t
-     helm-display-header-line nil
+     helm-display-header-line t
      )
     ;; (helm-autoresize-mode t)
     ;; hooks
@@ -72,33 +75,6 @@
 
     ))
 
-
-
-;; The default "C-x c" is quite close to "C-x C-c", which quits Emacs.
-;; Changed to "C-c h". Note: We must set "C-c h" globally, because we
-;; cannot change `helm-command-prefix-key' once `helm-config' is loaded.
-;; (define-key helm-map (kbd "C-i") 'helm-execute-persistent-action) ; make TAB works in terminal
-;; (define-key helm-map (kbd "C-z")  'helm-select-action) ; list actions using C-z
-
-;; (define-key helm-grep-mode-map (kbd "<return>")  'helm-grep-mode-jump-other-window)
-;; (define-key helm-grep-mode-map (kbd "n")  'helm-grep-mode-jump-other-window-forward)
-;; (define-key helm-grep-mode-map (kbd "p")  'helm-grep-mode-jump-other-window-backward)
-
-
-;; (add-to-list 'helm-sources-using-default-as-input 'helm-source-man-pages)
-
-
-;; (global-set-key (kbd "C-c h x") 'helm-register)
-;; (global-set-key (kbd "C-x r j") 'jump-to-register)
-
-;; (define-key 'help-command (kbd "C-f") 'helm-apropos)
-;; (define-key 'help-command (kbd "r") 'helm-info-emacs)
-;; (define-key 'help-command (kbd "C-l") 'helm-locate-library)
-
-;; use helm to list eshell history
-(add-hook 'eshell-mode-hook
-          #'(lambda ()
-              (define-key eshell-mode-map (kbd "M-l")  'helm-eshell-history)))
 
 ;;; Save current position to mark ring
 (add-hook 'helm-goto-line-before-hook 'helm-save-current-pos-to-mark-ring)
