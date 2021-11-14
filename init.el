@@ -37,10 +37,17 @@
 
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
-(defun package--save-selected-packages (&rest opt)
-  "I forgot what doing this function with OPT arg."
-  nil)
+(custom-set-variables
+ '(gnutls-algorithm-priority "normal:-vers-tls1.3"))
+;; (defun package--save-selected-packages (&rest opt)
+;;   "I forgot what doing this function with OPT arg."
+;;   nil)
 (setq inhibit-startup-message t)
+(setq inhibit-startup-screen t)
+(setq inhibit-splash-screen t)
+(column-number-mode t)
+(display-battery-mode t)
+
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 
@@ -92,10 +99,10 @@
 (require 'setup-neotree)
 ;;(require 'setup-helm-swoop)
 
-(use-package autopair
-  :ensure t
-  :config
-  (require 'autopair))
+;;(use-package autopair
+;;  :ensure t
+;;  :config
+;;  (require 'autopair))
 (require 'setup-org)
 (require 'custom-font)
 (require 'setup-modeline)
@@ -201,10 +208,6 @@
 ;; (show-paren-mode t)
 ;; (setq show-paren-style 'expression)
 ;; (electric-pair-mode t);; { } pair mode
-(setq inhibit-startup-screen t)
-(setq inhibit-splash-screen t)
-(column-number-mode t)
-(display-battery-mode t)
 
 (setq ediff-split-window-function 'split-window-horizontally)
 (setq make-backup-files nil)
