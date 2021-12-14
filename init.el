@@ -37,6 +37,8 @@
 
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
+(custom-set-variables
+ '(gnutls-algorithm-priority "normal:-vers-tls1.3"))
 ;; (defun package--save-selected-packages (&rest opt)
 ;;   "I forgot what doing this function with OPT arg."
 ;;   nil)
@@ -97,10 +99,10 @@
 (require 'setup-neotree)
 ;;(require 'setup-helm-swoop)
 
-(use-package autopair
-  :ensure t
-  :config
-  (require 'autopair))
+;;(use-package autopair
+;;  :ensure t
+;;  :config
+;;  (require 'autopair))
 (require 'setup-org)
 (require 'custom-font)
 (require 'setup-modeline)
