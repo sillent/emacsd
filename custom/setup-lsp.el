@@ -9,9 +9,9 @@
   :config
   ;; https://emacs-lsp.github.io/lsp-mode/page/performance/
   (setq read-process-output-max (* 1024 1024)) ;; 1mb
-  (setq lsp-completion-provider :capf)
-  (setq lsp-print-io t)
-  (setq lsp-rust-rls-command '("rls"))
+  ;; (setq lsp-completion-provider :capf)
+  ;; (setq lsp-print-io t)
+  ;; (setq lsp-rust-rls-command '("rls"))
   ;; (setq lsp-rust-rls-command '("rustup" "run" "nightly" "rls"))
   ;; (setq lsp-rust-rls-command '("rustup" "run" "beta" "rls"))
   (setenv "RUST_BACKTRACE" "full")
@@ -116,3 +116,4 @@ PARAMS progress report notification data."
   )
 
 (provide 'setup-lsp)
+;;; setup-lsp.el ends here
