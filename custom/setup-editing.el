@@ -18,7 +18,6 @@
 
 (setq-default indent-tabs-mode nil)
 (delete-selection-mode)
-(global-set-key (kbd "RET") 'newline-and-indent)
 
 ;; GROUP: Editing -> Killing
 (setq kill-ring-max 5000 ; increase kill-ring capacity

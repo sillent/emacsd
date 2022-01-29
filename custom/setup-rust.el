@@ -80,9 +80,13 @@
 
 (use-package rustic
   :ensure t
-  ;; :config
-  ;; (setq lsp-rust-analyzer-server-command "/Users/dima//Downloads/rust-analazer-mac")
-  )
+  :config
+  (progn
+    (setq rustic-lsp-format t)
+  (add-hook 'rustic-mode-hook
+            (lambda ()
+              (local-set-key (kbd "RET") 'my-indent-mode-line)))
+  ))
 
 (use-package flycheck-rust
   :ensure t

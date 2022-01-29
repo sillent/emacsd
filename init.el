@@ -32,6 +32,7 @@
                       "~/.cargo/bin:"
                       "~/.goroot/bin:"
                       "/usr/local/go/bin:"
+                      "/opt/homebrew/bin:"
                       ))
       (setenv "PATH" my-path)))
 
@@ -123,6 +124,7 @@
 (require 'setup-webmode)
 (require 'setup-projectile)
 (require 'setup-presentation)
+(require 'setup-lua)
 
 (windmove-default-keybindings)
 

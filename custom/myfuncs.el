@@ -27,6 +27,23 @@
   )
 
 (setq enable-local-variables t)
+
+(defun my-indent-mode-line ()
+  (interactive)
+  (newline-and-indent)
+  (when (looking-at "}")
+    (newline-and-indent)
+    (forward-line -1)
+    (end-of-line)
+    (rustic-indent-line)
+    )
+  (when (looking-at ")")
+    (newline-and-indent)
+    (forward-line -1)
+    (end-of-line)
+    (rustic-indent-line)
+    )
+  )
 (provide 'myfuncs)
 
 ;;; myfuncs.el ends here
