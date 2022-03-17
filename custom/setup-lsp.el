@@ -9,6 +9,9 @@
   :config
   ;; https://emacs-lsp.github.io/lsp-mode/page/performance/
   (setq read-process-output-max (* 1024 1024)) ;; 1mb
+  ;; turn off head with file name
+  (setq lsp-headerline-breadcrumb-enable nil)
+  ;;
   ;; (setq lsp-completion-provider :capf)
   ;; (setq lsp-print-io t)
   ;; (setq lsp-rust-rls-command '("rls"))
@@ -22,32 +25,33 @@
   ;; (add-to-list 'lsp-project-blacklist "^/Users/csraghunandan/\\.emacs\\.d/$"))
 
   ;; Fix problem seems to be caused by upgrading lsp-mode package to v3.
-  (unless (fboundp 'lsp-rust-enable)
-    (defun diabolo-lsp-rust-window-progress (_workspace params)
-      "Progress report handling.
-PARAMS progress report notification data."
-      ;; Minimal implementation - we could show the progress as well.
-      ;; (setq id (gethash "id" params))
-      (defvar du/title)
-      (defvar du/msg)
-      (defvar du/done)
-      (setq du/title (gethash "title" params))
-      (setq du/msg (gethash "message" params))
-      (setq du/done (gethash "done" params))
-      (message "RLS: %s%s%s"
-               du/title
-               (if du/msg (format " \"%s\"" du/msg) "")
-               (if du/done " done" "")))
+  ;;
+  ;; (unless (fboundp 'lsp-rust-enable)
+;;     (defun diabolo-lsp-rust-window-progress (_workspace params)
+;;       "Progress report handling.
+;; PARAMS progress report notification data."
+;;       ;; Minimal implementation - we could show the progress as well.
+;;       ;; (setq id (gethash "id" params))
+;;       (defvar du/title)
+;;       (defvar du/msg)
+;;       (defvar du/done)
+;;       (setq du/title (gethash "title" params))
+;;       (setq du/msg (gethash "message" params))
+;;       (setq du/done (gethash "done" params))
+;;       (message "RLS: %s%s%s"
+;;                du/title
+;;                (if du/msg (format " \"%s\"" du/msg) "")
+;;                (if du/done " done" "")))
 
-    (defun lsp-rust-enable ()
-      (require 'lsp-clients)
-      (when (boundp 'lsp-rust-rls-command)
-        (lsp-register-client
-         (make-lsp-client :new-connection (lsp-stdio-connection lsp-rust-rls-command)
-                          :major-modes '(rust-mode)
-                          :server-id 'rls
-                          :notification-handlers (lsp-ht ("window/progress" 'diabolo-lsp-rust-window-progress)))))
-      (lsp)))
+;;     (defun lsp-rust-enable ()
+;;       (require 'lsp-clients)
+;;       (when (boundp 'lsp-rust-rls-command)
+;;         (lsp-register-client
+;;          (make-lsp-client :new-connection (lsp-stdio-connection lsp-rust-rls-command)
+;;                           :major-modes '(rust-mode)
+;;                           :server-id 'rls
+;;                           :notification-handlers (lsp-ht ("window/progress" 'diabolo-lsp-rust-window-progress)))))
+;;       (lsp)))
   )
 
 ;; company-lsp: Company completion backend for lsp-mode.
@@ -80,7 +84,7 @@ PARAMS progress report notification data."
         ;; lsp-ui-sideline-show-flycheck t
         ;; lsp-ui-sideline-show-flycheck t
         lsp-ui-sideline-ignore-duplicate t
-        lsp-ui-sideline-enable t)
+        lsp-ui-sideline-enable nil)
   (if lsp-ui-doc-use-webkit ;; window-system
       (setq lsp-ui-doc-position 'at-point
             lsp-ui-doc-header t

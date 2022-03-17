@@ -82,8 +82,9 @@
   :ensure t
   :config
   (progn
+    (setq lsp-rust-analyzer-proc-macro-enable t)
     (setq rustic-lsp-format t)
-  (add-hook 'rustic-mode-hook
+    (add-hook 'rustic-mode-hook
             (lambda ()
               (local-set-key (kbd "RET") 'my-indent-mode-line)))
   ))
