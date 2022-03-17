@@ -6,17 +6,22 @@
 
 (use-package lsp-mode
   :ensure t
+  :custom
+  (lsp-rust-analyzer-proc-macro-enable t)
+  (lsp-rust-analyzer-experimental-proc-attr-macros t)
   :config
   ;; https://emacs-lsp.github.io/lsp-mode/page/performance/
   (setq read-process-output-max (* 1024 1024)) ;; 1mb
+
   ;; turn off head with file name
-  (setq lsp-headerline-breadcrumb-enable nil)
-  ;;
+  ;; (setq lsp-headerline-breadcrumb-enable nil)
+
   ;; (setq lsp-completion-provider :capf)
   ;; (setq lsp-print-io t)
   ;; (setq lsp-rust-rls-command '("rls"))
   ;; (setq lsp-rust-rls-command '("rustup" "run" "nightly" "rls"))
   ;; (setq lsp-rust-rls-command '("rustup" "run" "beta" "rls"))
+  (setq lsp-lens-enable t)
   (setenv "RUST_BACKTRACE" "full")
   (setenv "RUST_LOG" "rls::=debug")
   ;; (setenv "LD_LIBRARY_PATH" "/home/diabolo/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/")

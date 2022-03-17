@@ -13,8 +13,8 @@
    '("3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" default))
  '(gnutls-algorithm-priority "normal:-vers-tls1.3")
  '(undo-tree-auto-save-history nil)
- '(lsp-rust-analyzer-proc-macro-enable t)
- '(lsp-rust-analyzer-experimental-proc-attr-macros t))
+
+ )
 ;;'(custom-safe-themes
 ;;(quote
 ;;("7ceb8967b229c1ba102378d3e2c5fef20ec96a41f615b454e0dc0bfa1d326ea6" default))))
