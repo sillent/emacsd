@@ -80,10 +80,14 @@
 
 (use-package rustic
   :ensure t
+  :bind
+  ("M-j" . lsp-ui-imenu)
+  ("M-?" . lsp-find-references)
   :config
   (progn
     (setq lsp-rust-analyzer-proc-macro-enable t)
     (setq rustic-lsp-format t)
+    (setq lsp-rust-all-targets nil)
     (add-hook 'rustic-mode-hook
             (lambda ()
               (local-set-key (kbd "RET") 'my-indent-mode-line)))
@@ -92,6 +96,8 @@
 (use-package flycheck-rust
   :ensure t
   :defer t
+  :bind
+  ("C-c C-f" . lsp-rust-analyzer-open-cargo-toml)
   :config
   (add-hook  'flycheck-mode-hook #'flycheck-rust-setup))
 
