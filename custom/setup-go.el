@@ -25,7 +25,13 @@
   :ensure t
   :config
   (progn
+    ;; (defvar my/home)
+    ;; (setq my/home (getenv "HOME"))
+    ;; (setenv "GOPATH" (concat my/home "/" "go"))
+    ;; (setenv "GOROOT" "/opt/homebrew/Cellar/go/1.18")
+    ;; (setq-default gofmt-command "goimports")
     (add-hook 'go-mode-hook 'go-eldoc-setup)
+    (add-hook 'before-save-hook 'gofmt-before-save)
     (add-hook 'go-mode-hook 'lsp-deferred)
     (add-hook 'go-mode-hook (lambda ()
                               (set (make-local-variable 'company-backends) '(company-go))
