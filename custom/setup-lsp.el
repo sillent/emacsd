@@ -9,6 +9,8 @@
   :custom
   (lsp-rust-analyzer-proc-macro-enable t)
   (lsp-rust-analyzer-experimental-proc-attr-macros t)
+  (lsp-rust-all-targets nil)
+  (lsp-idle-delay 0.6)
   :config
   ;; https://emacs-lsp.github.io/lsp-mode/page/performance/
   (setq read-process-output-max (* 1024 1024)) ;; 1mb
@@ -22,7 +24,7 @@
   ;; (setq lsp-rust-rls-command '("rustup" "run" "nightly" "rls"))
   ;; (setq lsp-rust-rls-command '("rustup" "run" "beta" "rls"))
   (setq lsp-lens-enable t)
-  (setenv "RUST_BACKTRACE" "full")
+  ;; (setenv "RUST_BACKTRACE" "full")
   (setenv "RUST_LOG" "rls::=debug")
   ;; (setenv "LD_LIBRARY_PATH" "/home/diabolo/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/")
   ;; (setq lsp-rust-rls-command '("/home/diabolo/src/rust/rls/target/debug/rls"))
