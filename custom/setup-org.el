@@ -9,5 +9,15 @@
 (global-set-key "\C-cc" 'org-capture)
 (global-set-key "\C-cb" 'org-iswitchb)
 
+(use-package ob-blockdiag
+  :ensure t
+  :config
+  (org-babel-do-load-languages 'org-babel-load-languages
+                               '((blockdiag . t)))
+  )
+
+
+
+
 (provide 'setup-org)
 ;;; setup-org.el ends here
