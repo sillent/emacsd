@@ -12,6 +12,8 @@
  '(custom-safe-themes
    '("3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" default))
  '(gnutls-algorithm-priority "normal:-vers-tls1.3")
+ '(undo-tree-auto-save-history nil)
+
  )
 ;;'(custom-safe-themes
 ;;(quote

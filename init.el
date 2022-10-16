@@ -32,6 +32,7 @@
                       "~/.cargo/bin:"
                       "~/.goroot/bin:"
                       "/usr/local/go/bin:"
+                      "/opt/homebrew/bin:"
                       ))
       (setenv "PATH" my-path)))
 
@@ -48,7 +49,6 @@
 (column-number-mode t)
 (display-battery-mode t)
 
-
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 ;; this variables must be set before load helm-gtags
@@ -62,10 +62,18 @@
 (use-package gnu-elpa-keyring-update
   :ensure t)
 
-(use-package pkg-info
+;; (use-package pkg-info
+;;   :ensure t
+;;   )
+(use-package diff-hl
   :ensure t
-  )
+  :config
+  (progn
+    (add-hook 'prog-mode-hook 'turn-on-diff-hl-mode)
+    (add-hook 'vc-dir-mode-hook 'turn-on-diff-hl-mode)
+    (diff-hl-flydiff-mode)))
 
+;;; anzu used to display search matches
 (use-package anzu
   :ensure t
   :config
@@ -116,6 +124,8 @@
 (require 'setup-webmode)
 (require 'setup-projectile)
 (require 'setup-presentation)
+(require 'setup-lua)
+(require 'setup-dap)
 
 (windmove-default-keybindings)
 
