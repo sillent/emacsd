@@ -125,6 +125,7 @@
 (require 'setup-projectile)
 (require 'setup-presentation)
 (require 'setup-lua)
+(require 'setup-dap)
 
 (windmove-default-keybindings)
 
