@@ -39,9 +39,9 @@
                               ))
     (add-hook 'go-mode-hook 'yas-minor-mode)
     (add-hook 'go-mode-hook 'flycheck-mode)
-    (add-hook 'go-mode-hook
-              (lambda ()
-                (local-set-key (kbd "RET") 'my-indent-mode-line)))
+    ;; (add-hook 'go-mode-hook
+    ;;           (lambda ()
+    ;;             (local-set-key (kbd "RET") 'my-indent-mode-line)))
     (setq multi-compile-alist '(
         (go-mode . (
         ("go-build" "go build -v"
