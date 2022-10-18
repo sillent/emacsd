@@ -26,11 +26,16 @@
         ("C-c C-c C-t" . cargo-process-test)
    ))
 
-(when (< (car (pkg-info-package-version 'lsp-mode)) 20190105)
-  (use-package lsp-rust
-    :ensure t
-    :after lsp-mode
-    ))
+;; (when (< (car (pkg-info-package-version 'lsp-mode)) 20190105)
+;;   (use-package lsp-rust
+;;     :ensure t
+;;     :after lsp-mode
+;;     ))
+
+;; (use-package lsp-rust
+;;   :ensure t
+;;   :after lsp-mode
+;;   )
 
 (defun du/rust-toggle-mutability ()
   "Toggle the mutability of the variable at point."
@@ -85,9 +90,9 @@
   ("M-?" . lsp-find-references)
   :config
   (progn
-    (setq lsp-rust-analyzer-proc-macro-enable t)
-    (setq rustic-lsp-format t)
-    (setq lsp-rust-all-targets nil)
+    ;; (setq lsp-rust-analyzer-proc-macro-enable t)
+    ;; (setq rustic-lsp-format t)
+    ;; (setq lsp-rust-all-targets nil)
     (add-hook 'rustic-mode-hook
             (lambda ()
               (local-set-key (kbd "RET") 'my-indent-mode-line)))

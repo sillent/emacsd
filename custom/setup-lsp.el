@@ -11,7 +11,9 @@
   (lsp-rust-analyzer-experimental-proc-attr-macros t)
   (lsp-rust-all-targets nil)
   (lsp-rust-analyzer-cargo-watch-enable nil)
-  (lsp-idle-delay 0.6)
+  (lsp-idle-delay 0.5)
+  (setq lsp-use-plists 1)
+
   :config
   ;; https://emacs-lsp.github.io/lsp-mode/page/performance/
   (setq read-process-output-max (* 1024 1024)) ;; 1mb
