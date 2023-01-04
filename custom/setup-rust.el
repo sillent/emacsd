@@ -5,17 +5,6 @@
 ;;; Email: siilent1987@yahoo.com
 ;;; Code:
 
-;; (eval-when-compile
-;;   (require 'cl))
-
-;; (use-package racer
-;;  :ensure t)
-
-;; (use-package company-racer
-;;   :ensure t
-;;   :defer t
-;;   )
-
 (use-package cargo
   :ensure t
   :defer t
@@ -41,7 +30,8 @@
   "Toggle the mutability of the variable at point."
   (interactive)
   (save-excursion
-    (racer-find-definition)
+    ;; (racer-find-definition)
+    (lsp-find-definition)
     (back-to-indentation)
     (forward-char 4)
     (if (lookin-at "mut ")
@@ -90,12 +80,12 @@
   ("M-?" . lsp-find-references)
   :config
   (progn
-    ;; (setq lsp-rust-analyzer-proc-macro-enable t)
-    ;; (setq rustic-lsp-format t)
-    ;; (setq lsp-rust-all-targets nil)
     (add-hook 'rustic-mode-hook
             (lambda ()
-              (local-set-key (kbd "RET") 'my-indent-mode-line)))
+              (local-set-key (kbd "RET") 'my-indent-mode-line)
+              (setq indent-tabs-mode nil)
+              (electric-indent-mode 0)
+              ))
   ))
 
 (use-package flycheck-rust
