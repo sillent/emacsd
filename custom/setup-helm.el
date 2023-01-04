@@ -16,13 +16,13 @@
     (defvar helm-ff-search-library-in-sexp)
     (defvar helm-split-window-inside-p)
     (defvar helm-buffers-fuzzy-matching)
-    (defvar helm-ff-file-name-history-use-recentf)
+    ;; (defvar helm-ff-file-name-history-use-recentf)
     (setq
      helm-scroll-amount 4
      helm-ff-search-library-in-sexp t     ; search for library in 'require'
      helm-split-window-inside-p t
      helm-candidate-number-limit 20
-     helm-ff-file-name-history-use-recentf t
+     ;; helm-ff-file-name-history-use-recentf t
      helm-move-to-line-cycle-in-source t
      helm-buffers-fuzzy-matching t
      helm-display-header-line nil
@@ -45,7 +45,7 @@
    ("C-h SPC" . helm-all-mark-rings))
   :config
   (progn
-    (require 'helm-config)
+;;    (require 'helm-config)
     (require 'helm-grep)
     (global-set-key (kbd "C-c h") 'helm-command-prefix)
     (global-unset-key (kbd "C-x c"))

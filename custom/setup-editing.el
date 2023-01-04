@@ -63,10 +63,11 @@
   :config
   (progn
     (require 'clean-aindent-mode)
-    (add-hook 'prog-mode-hook 'clean-aindent-mode)))
+    (add-hook 'prog-mode-hook 'clean-aindent-mode))
+  )
 
-;;(require 'clean-aindent-mode)
-;;(add-hook 'prog-mode-hook 'clean-aindent-mode)
+(require 'clean-aindent-mode)
+(add-hook 'prog-mode-hook 'clean-aindent-mode)
 
 
 ;; PACKAGE: dtrt-indent

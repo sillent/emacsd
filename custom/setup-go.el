@@ -21,15 +21,18 @@
   :ensure t)
 (use-package go-guru
   :ensure t)
+(use-package go-imports
+  :ensure t)
 (use-package go-mode
   :ensure t
   :config
   (progn
     ;; (defvar my/home)
     ;; (setq my/home (getenv "HOME"))
-    ;; (setenv "GOPATH" (concat my/home "/" "go"))
-    ;; (setenv "GOROOT" "/opt/homebrew/Cellar/go/1.18")
+    ;; (setenv "GOPATH" (eval-expression "go env GOPATH"))
+    ;; (setenv "GOROOT" "/opt/homebrew/Cellar/go/1.19.2/libexec")
     ;; (setq-default gofmt-command "goimports")
+    ;; (add-to-list 'auto-mode-alist '("\\.go\\" . go-mode))
     (add-hook 'go-mode-hook 'go-eldoc-setup)
     (add-hook 'before-save-hook 'gofmt-before-save)
     (add-hook 'go-mode-hook 'lsp-deferred)
@@ -49,5 +52,13 @@
            ("go-build-and-run" "go build -v && echo 'build finish' && eval ./${PWD##*/}"
               (multi-compile-locate-file-dir ".git"))))
                   ))))
+
+(defun lsp-go-install-save-hooks ()
+  (add-hook 'before-save-hook #'lsp-format-buffer t t)
+  (add-hook 'before-save-hook #'lsp-organize-imports t t))
+(add-hook 'go-mode-hook #'lsp-go-install-save-hooks)
+
+(message (getenv "PATH"))
+
 (provide 'setup-go)
 ;;; setup-go.el ends here
